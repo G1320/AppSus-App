@@ -1,14 +1,44 @@
 export default {
   template: `
   <header class="main-keep-nav">
-    <!-- RouterLink -->
-    <!-- RouterLink -->
-    <!-- RouterLink -->
+  <p>I AM A NAV HAMBURGER</p>
+  <p>I AM A NAV LOGO</p>
+  <p>I AM A NAV INPUT</p>
+  <p>I AM A NAV ITEM</p>
+  <p>I AM A NAV ITEM</p>
+  <p>I AM A NAV ITEM</p>
+  <p>I AM A NAV ITEM</p>
   </header>
-  //Component add note
+
+<div class="add-note">
+  
+  <P>
+    i AM Component add note
+  </P>
+</div>
+
+
+
   <main class="main-keep-content"></main>
-    <h1>Hello KEEP</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi porro inventore recusandae eum maxime culpa, blanditiis iure quidem in voluptatibus rerum aliquid natus odit totam, consequuntur quod nesciunt, voluptates asperiores!</p>
+
+    <div class="filter-list">
+      <p>I AM A NOTE</p>
+      <p>I AM A REMINDER</p>
+      <p>I AM A EDIT LABEL</p>
+      <p>I AM A ARCHIVE</p>
+      <p>I AM A TRASH</p>
+
+<div/>
+
+    <div class="note-list">
+      <p>I AM A NOTE</p>
+      <p>I AM A NOTE</p>
+      <p>I AM A NOTE</p>
+      <p>I AM A NOTE</p>
+      <p>I AM A NOTE</p>
+    </div>
+    
+
 
     `,
 };
