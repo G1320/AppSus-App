@@ -8,6 +8,14 @@ import noteDetails from './noteDetails.js';
 
 export default {
   template: `
+    <main class="keep-main-content">
+    <div class="keep-filter-list">
+      <p>I AM A REMINDER</p>
+      <p>I AM A EDIT LABEL</p>
+      <p>I AM A ARCHIVE</p>
+      <p>I AM A TRASH</p>
+
+  </div>
         <section class="note-index">
         <RouterLink to="/note/edit">Edit a note</RouterLink>
 
@@ -23,6 +31,8 @@ export default {
                 @hide-details="selectedNote = null"
                 :note="selectedNote"/>
         </section>
+        </main>
+
     `,
   data() {
     return {

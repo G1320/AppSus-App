@@ -1,10 +1,10 @@
 export default {
-  props: ['review'],
+  props: ['noteInfo'],
   template: `
-          <article class="review-preview">
-            <h3>{{ review.name }}</h3>
-            <p class="stars">{{ makeStars }}</p>
-            <p class="date">Read At: {{ review.readAt }}</p>
+          <article class="note-info-preview">
+            <h3>{{ noteInfo.name }}</h3>
+            <!-- <p class="stars">{{ makeStars }}</p> -->
+            <!-- <p class="date">Read At: {{ noteInfo.readAt }}</p> -->
         </article>
         `,
 
@@ -12,12 +12,12 @@ export default {
     return {};
   },
   created() {
-    console.log(this.review);
+    console.log(this.noteInfo);
   },
   methods: {},
   computed: {
     makeStars() {
-      return '★'.repeat(+this.review.rate);
+      // return '★'.repeat(+this.noteInfo.rate);
     },
   },
 };

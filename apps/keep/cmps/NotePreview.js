@@ -1,3 +1,5 @@
+import NoteTxt from './NoteTxt.js';
+
 export default {
   props: ['note'],
   template: `
@@ -5,9 +7,10 @@ export default {
               <!-- <img :src="note.thumbnail"> -->
             
               <!-- <p>{{ formattedCurrency }}</p> -->
-                <h3>title</h3>
+                <!-- <h3> {{ note.title }}</h3> -->
 
-              <component @update-info="onUpdate" :is="note.type" :info="note.info" ></component>
+
+              <component @update-info="onUpdate" :is="note.type" :info="note.info" > </component>
           </article>
       `,
 
@@ -17,10 +20,12 @@ export default {
     //     return Intl.NumberFormat('en', { style: 'currency', currency: currencyCode }).format(amount);
     //   },
   },
-  methods:{
-    onUpdate(valueToUpdate){
-      console.log('',valueToUpdate);
-      
-    }
-  }
+  methods: {
+    onUpdate(valueToUpdate) {
+      console.log('', valueToUpdate);
+    },
+  },
+  components: {
+    NoteTxt,
+  },
 };

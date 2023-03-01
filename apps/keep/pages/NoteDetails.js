@@ -4,6 +4,7 @@ import LongTxt from '../cmps/LongTxt.js';
 // import AddNote from '../cmps/AddNote.js';
 export default {
   template: `
+
         <section v-if="note" class="note-details">
           <img :src="note.thumbnail">
           <h2>{{ note.id }}</h2>

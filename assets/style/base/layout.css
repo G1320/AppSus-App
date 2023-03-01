@@ -30,3 +30,8 @@ margin: auto;
   grid-template-columns: 0.3fr 0.7fr;
   border: 2px solid purple;
 }
+
+.note-preview{
+  border: 2px solid purple;
+  
+}

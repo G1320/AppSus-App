@@ -78,6 +78,7 @@ function _createNotes() {
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
+        title: 'Im the First!',
         style: {
           backgroundColor: '#00d',
         },
@@ -85,28 +86,56 @@ function _createNotes() {
           txt: 'Fullstack Me Baby!',
         },
       },
+      // {
+      //   id: 'n102',
+      //   type: 'NoteImg',
+      //   isPinned: false,
+      //   info: {
+      //     url: 'http://some-img/me',
+      //     title: 'Bobi and Me',
+      //   },
+      //   style: {
+      //     backgroundColor: '#00d',
+      //   },
+      // },
+      // {
+      //   id: 'n103',
+      //   type: 'NoteTodos',
+      //   isPinned: false,
+      //   info: {
+      //     title: 'Get my stuff together',
+      //     todos: [
+      //       { txt: 'Driving license', doneAt: null },
+      //       { txt: 'Coding power', doneAt: 187111111 },
+      //     ],
+      //   },
+      // },
       {
-        id: 'n102',
-        type: 'NoteImg',
-        isPinned: false,
-        info: {
-          url: 'http://some-img/me',
-          title: 'Bobi and Me',
-        },
+        id: 'n104',
+        createdAt: 1112255,
+        type: 'NoteTxt',
+        isPinned: true,
+        title: 'Im the Second!',
+
         style: {
           backgroundColor: '#00d',
         },
+        info: {
+          txt: 'I think I got it!',
+        },
       },
       {
-        id: 'n103',
-        type: 'NoteTodos',
-        isPinned: false,
+        id: 'n105',
+        createdAt: 1112299,
+        type: 'NoteTxt',
+        isPinned: true,
+        title: 'Im the Third!',
+
+        style: {
+          backgroundColor: '#00d',
+        },
         info: {
-          title: 'Get my stuff together',
-          todos: [
-            { txt: 'Driving license', doneAt: null },
-            { txt: 'Coding power', doneAt: 187111111 },
-          ],
+          txt: 'Lets take it further!',
         },
       },
     ];
