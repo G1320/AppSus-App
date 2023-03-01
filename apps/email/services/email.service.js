@@ -32,8 +32,6 @@ export const emailService = {
     getEmptyEmail,
 }
 
-check()
-
 function check() {
     let x = utilService.makeLorem(5)
     console.log('check:', x)

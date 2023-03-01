@@ -1,85 +1,40 @@
-import { emailService } from '../services/email.service.js'
+import { emailService } from './../services/email.service.js'
 
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
-    template: `
-        <section class="email-index">
-            <RouterLink to="/email/edit">Add a email</RouterLink>
-            <EmailFilter @filter="setFilterBy"/>
-            Unread Emails : {{getUnread}}
-            <EmailList 
-                :emails="filteredEmails" 
-                @remove="removeEmail" />
+  name: 'EmailIndex',
+  template: `
+        <section v-if="emails" class="email-index">
+            <RouterLink @click="handleCompose" to="/email/edit">Compose an email</RouterLink>
+            <EmailFilter/>
+          
+            <h2>Inbox :</h2>
+            <RouterView></RouterView>
+           
           
         </section>
     `,
-    data() {
-        return {
-            emails: [],
-            filterBy: {},
-            // unread : '0'
-        }
-    },
-    created() {
-      emailService.query()
+  created() {
+    emailService.query()
       .then(emails => this.emails = emails)
-    },
-    methods: {
-      removeEmail(emailId) {
-            emailService.remove(emailId)
-                .then(() => {
-                    const idx = this.emails.findIndex(email => email.id === emailId)
-                    this.emails.splice(idx, 1)
-                    showSuccessMsg('Email removed')
-                  })
-                  .catch(err => {
-                    showErrorMsg('Email remove failed')
-                  })
-                },
-        setFilterBy(filterBy) {
-            this.filterBy = filterBy
-          },
-    },
-    computed: {
-      filteredEmails() {
-            const regex = new RegExp(this.filterBy.subject, 'i')
-            return this.emails.filter(email => regex.test(email.subject))
-      },
-     getUnread(){
-      return this.emails.filter(email=> !email.isRead).length
-     }
-    },
+  },
+  data() {
+    return {
+      emails: null,
 
-    components: {
-      EmailFilter,
-      EmailList,
     }
+  },
+  methods: {
+    handleCompose() {
+      this.$router.push({ path: '/email/list', query: { compose: 'new' } });
+    }
+  },
+  components: {
+    EmailFilter,
+    EmailList,
+  }
 }
 
-// import { emailService } from "../services/email.service.js"
-
-// export default {
-//   name: '',
-//   props: [],
-//   template: `
-//   <h1>Hello World</h1>
-  
-//   <section class = "email-index">
-//     <EmailList 
-//     :emails="filteredEmails" 
-//     @remove="removeEmail" />
-//     </section>
-//     `,
-
-//   components: {},
-//   created() {
-//   },
-//   data() {
-//     return {}
-//   },
-//   methods: {},
-//   computed: {},
-// }

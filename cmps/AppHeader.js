@@ -4,7 +4,7 @@ export default {
             <h1>AppSus</h1>
             <nav>
             <RouterLink to="/">Home</RouterLink> |
-            <RouterLink to="/email">Email</RouterLink>|
+            <RouterLink to="/email/list">Email</RouterLink>|
             <RouterLink to="/note">Notes</RouterLink>|
               <RouterLink to="/note">Notes</RouterLink> |
               <RouterLink to="/about">About</RouterLink>|

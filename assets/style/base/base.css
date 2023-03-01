@@ -2,9 +2,7 @@
   box-sizing: border-box;
 }
 
-html {
-  
-}
+html {}
 
 body {
   margin: 0;
@@ -26,7 +24,7 @@ p {
 }
 
 a {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: unset;
 }
 
@@ -52,3 +50,6 @@ button {
   outline: 1px solid gold
 }
 
+.router-link-active {
+  text-decoration: overline;
+}
