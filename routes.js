@@ -2,6 +2,8 @@ import HomePage from './views/HomePage.js';
 import AboutUs from './views/AboutUs.js';
 import EmailIndex from './apps/email/pages/EmailIndex.js';
 import NoteIndex from './apps/keep/pages/NoteIndex.js';
+// import NoteDetails from './apps/keep/pages/NoteDetails.js';
+// import NoteEdit from './apps/keep/cmps/NoteEdit.js';
 
 const { createRouter, createWebHashHistory } = VueRouter;
 const options = {
@@ -25,21 +27,21 @@ const options = {
       //     },
       //   ],
     },
+    {
+      path: '/note',
+      component: NoteIndex,
+    },
     // {
-    //   path: '/book',
-    //   component: BookIndex,
+    //   path: '/note/add',
+    //   component: NoteAdd,
     // },
     // {
-    //   path: '/book/add',
-    //   component: BookAdd,
+    //   path: '/note/:noteId',
+    //   component: NoteDetails,
     // },
     // {
-    //   path: '/book/:bookId',
-    //   component: BookDetails,
-    // },
-    // {
-    //   path: '/book/edit/:emailId?',
-    //   component: BookEdit,
+    //   path: '/note/edit/:emailId?',
+    //   component: NoteEdit,
     // },
 
     {

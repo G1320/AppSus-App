@@ -40,7 +40,7 @@
     font-family: fa;
 }
 
-.fa.fa-facebook::before {
+.fa.fa-facenote::before {
     content: "\f39e";
 }
 

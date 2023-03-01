@@ -24,8 +24,8 @@ margin: auto;
   width: 30svw;
 }
 
-.keep-main-keep-content{
-  height: 50svh;
+.keep-main-content{
+  height: 80svh;
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
   border: 2px solid purple;
