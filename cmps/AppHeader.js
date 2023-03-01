@@ -5,7 +5,7 @@ export default {
             <nav>
             <RouterLink to="/">Home</RouterLink> |
             <RouterLink to="/email">Email</RouterLink>|
-            <RouterLink to="/keep">Keep</RouterLink>|
+            <RouterLink to="/note">Notes</RouterLink>|
               <RouterLink to="/book">Books</RouterLink> |
               <RouterLink to="/about">About</RouterLink>|
                 <!-- <router-link to="/">Home</router-link> | 

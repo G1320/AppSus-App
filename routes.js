@@ -1,7 +1,7 @@
 import HomePage from './views/HomePage.js';
 import AboutUs from './views/AboutUs.js';
-import EmailIndex from './views/EmailIndex.js';
-import KeepIndex from './views/KeepIndex.js';
+import EmailIndex from './apps/email/pages/EmailIndex.js';
+import NoteIndex from './apps/keep/pages/NoteIndex.js';
 
 const { createRouter, createWebHashHistory } = VueRouter;
 const options = {
@@ -47,8 +47,8 @@ const options = {
       component: EmailIndex,
     },
     {
-      path: '/keep',
-      component: KeepIndex,
+      path: '/note',
+      component: NoteIndex,
     },
 
     // Last fallback if no route was matched:
