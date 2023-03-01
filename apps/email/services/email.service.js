@@ -5,6 +5,23 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const EMAIL_KEY = 'emailDB'
 
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+
+const email = {
+    id: '',
+    subject: '',
+    body: '',
+    isRead: false,
+    sentAt: Date.now(),
+    removedAt: null,
+    from: 'momo@momo.com',
+    to: loggedinUser.email
+}
+
+
 _createEmails()
 
 export const emailService = {
@@ -27,10 +44,10 @@ function query(filterBy = {}) {
         .then(emails => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                emails = emails.filter(email => regex.test(email.vendor))
+                emails = emails.filter(email => regex.test(email.subject))
             }
             if (filterBy.minSpeed) {
-                emails = emails.filter(email => email.maxSpeed >= filterBy.minSpeed)
+                emails = emails.filter(email => email.body >= filterBy.minSpeed)
             }
             return emails
         })
@@ -53,24 +70,25 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(vendor = '', maxSpeed = 0) {
-    return { id: '', vendor, maxSpeed }
+function getEmptyEmail(subject = '', body = 0) {
+    // return { id: '', subject, body }
+    return { id: '', subject, body, isRead: false, sentAt: Date.now(), removedAt: null, from: 'random@gmail.com', to: 'me@gmail.com' }
 }
 
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createEmail('audu', 300))
-        emails.push(_createEmail('fiak', 120))
-        emails.push(_createEmail('subali', 100))
-        emails.push(_createEmail('mitsu', 150))
+        emails.push(_createEmail('Welcome to YouTube'))
+        emails.push(_createEmail('Your subscription has expired'))
+        emails.push(_createEmail('Your Facebook friend wants to let you know'))
+        emails.push(_createEmail('Get one month free trial at Spotify Music'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
 }
 
-function _createEmail(vendor, maxSpeed = 250) {
-    const email = getEmptyEmail(vendor, maxSpeed)
+function _createEmail(subject, body = 'the body of the E-Mail') {
+    const email = getEmptyEmail(subject, body)
     email.id = utilService.makeId()
     return email
 }

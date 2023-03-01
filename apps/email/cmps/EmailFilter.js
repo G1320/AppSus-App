@@ -1,0 +1,39 @@
+export default {
+    template: `
+        <section class="email-filter">
+            <input 
+                v-model="filterBy.subject"
+                placeholder="Search"
+                type="text" />
+                
+            <!-- <input 
+                v-model.number="filterBy.body"
+                placeholder="Max speed"
+                type="number" /> -->
+        </section>
+    `,
+    data() {
+        return {
+            filterBy: { subject: '' },
+        }
+    },
+    methods: {
+        filter() {
+            this.$emit('filter', this.filterBy)
+        }
+    },
+    watch: {
+        filterBy: {
+            handler() {
+                console.log('filterBy changed', this.filterBy)
+                this.$emit('filter', this.filterBy)
+            },
+            deep: true
+        },
+        'filterBy.subject'() {
+            console.log('filterBy SUBJECT changed', this.filterBy)
+            this.$emit('filter', this.filterBy)
+        },
+    }
+
+}
