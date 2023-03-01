@@ -9,7 +9,7 @@ export default {
         <section class="email-index">
             <RouterLink to="/email/edit">Add a email</RouterLink>
             <EmailFilter @filter="setFilterBy"/>
-            Unread Emails : {{emails.length}}
+            Unread Emails : {{getUnread}}
             <EmailList 
                 :emails="filteredEmails" 
                 @remove="removeEmail" />
@@ -48,6 +48,9 @@ export default {
             const regex = new RegExp(this.filterBy.subject, 'i')
             return this.emails.filter(email => regex.test(email.subject))
       },
+     getUnread(){
+      return this.emails.filter(email=> !email.isRead).length
+     }
     },
 
     components: {

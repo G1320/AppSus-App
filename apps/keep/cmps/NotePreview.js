@@ -3,8 +3,11 @@ export default {
   template: `
           <article class="note-preview">
               <!-- <img :src="note.thumbnail"> -->
-              <h3>{{ note.id }}</h3>
+            
               <!-- <p>{{ formattedCurrency }}</p> -->
+                <h3>title</h3>
+
+              <component @update-info="onUpdate" :is="note.type" :info="note.info" ></component>
           </article>
       `,
 
@@ -14,4 +17,10 @@ export default {
     //     return Intl.NumberFormat('en', { style: 'currency', currency: currencyCode }).format(amount);
     //   },
   },
+  methods:{
+    onUpdate(valueToUpdate){
+      console.log('',valueToUpdate);
+      
+    }
+  }
 };
