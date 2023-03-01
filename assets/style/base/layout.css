@@ -4,6 +4,29 @@
   padding-right: 1.6rem;
 }
 
-.app-footer{
-  margin-block-end: 0px;
+.keep-main-nav{
+  display: flex;
+  gap: 20px;
+  height: 60px;
+  border: 2px solid purple;
+}
+
+.keep-add-note{
+  height: 40px;
+width: 60svw;
+margin: auto;
+  border: 2px solid purple;
+  
+}
+
+.keep-filter-list{
+  border: 2px solid purple;
+  width: 30svw;
+}
+
+.keep-main-keep-content{
+  height: 50svh;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  border: 2px solid purple;
 }
