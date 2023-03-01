@@ -21,10 +21,10 @@ function query(filterBy = {}) {
   return storageService.query(NOTE_KEY).then((notes) => {
     if (filterBy.txt) {
       const regex = new RegExp(filterBy.txt, 'i');
-      notes = notes.filter((note) => regex.test(note.vendor));
+      notes = notes.filter((note) => regex.test(note.subject));
     }
     if (filterBy.minSpeed) {
-      notes = notes.filter((note) => note.maxSpeed >= filterBy.minSpeed);
+      notes = notes.filter((note) => note.body >= filterBy.minSpeed);
     }
     return notes;
   });
@@ -144,8 +144,8 @@ function _createNotes() {
   }
 }
 
-function _createNote(vendor, maxSpeed = 250) {
-  const note = getEmptyNote(vendor, maxSpeed);
+function _createNote(subject, body = 250) {
+  const note = getEmptyNote(subject, body);
   note.id = utilService.makeId();
   return note;
 }

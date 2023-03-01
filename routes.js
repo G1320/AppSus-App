@@ -1,7 +1,10 @@
 import HomePage from './views/HomePage.js';
 import AboutUs from './views/AboutUs.js';
 import EmailIndex from './apps/email/pages/EmailIndex.js';
+import EmailDetails from './apps/email/pages/EmailDetails.js';
+import EmailEdit from './apps/email/pages/EmailEdit.js';
 import NoteIndex from './apps/keep/pages/NoteIndex.js';
+import EmailList from './apps/email/cmps/EmailList.js';
 // import NoteDetails from './apps/keep/pages/NoteDetails.js';
 // import NoteEdit from './apps/keep/cmps/NoteEdit.js';
 
@@ -16,38 +19,26 @@ const options = {
     {
       path: '/about',
       component: AboutUs,
-      //   children: [
-      //     {
-      //       path: 'team',
-      //       component: AboutTeam,
-      //     },
-      //     {
-      //       path: 'services',
-      //       component: AboutServices,
-      //     },
-      //   ],
+
     },
     {
       path: '/note',
       component: NoteIndex,
     },
-    // {
-    //   path: '/note/add',
-    //   component: NoteAdd,
-    // },
-    // {
-    //   path: '/note/:noteId',
-    //   component: NoteDetails,
-    // },
-    // {
-    //   path: '/note/edit/:emailId?',
-    //   component: NoteEdit,
-    // },
-
-    {
+   {
       path: '/email',
       component: EmailIndex,
-    },
+      children: [
+        {
+          path: 'list',
+          component: EmailList
+        },
+        {
+          path: ':id',
+          component: EmailDetails
+        }
+      ]
+    },   
     {
       path: '/note',
       component: NoteIndex,

@@ -1,3 +1,5 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     template: `
         <section class="email-filter">
@@ -26,7 +28,7 @@ export default {
         filterBy: {
             handler() {
                 console.log('filterBy changed', this.filterBy)
-                this.$emit('filter', this.filterBy)
+                eventBus.emit('filter', {...this.filterBy})
             },
             deep: true
         },
