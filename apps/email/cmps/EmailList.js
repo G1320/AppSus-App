@@ -12,6 +12,7 @@ export default {
             Unread: {{getUnread}}
             <ul>
                 <li v-for="email in emails" :key="email.id">
+                    <pre>is Read: {{email.isRead}}</pre>
                     <EmailPreview :email="email"/>
                     <RouterLink :to="'/email/'+email.id">Details</RouterLink> |
                     <RouterLink :to="'/email/edit/'+email.id">Edit</RouterLink> |

@@ -61,6 +61,7 @@ function remove(emailId) {
 }
 
 function save(email) {
+    console.log('email', email)
     if (email.id) {
         return storageService.put(EMAIL_KEY, email)
     } else {

@@ -57,13 +57,14 @@ export default {
                     if (this.email.isRead) return
                     else {
                         this.email.isRead = true
-                        showSuccessMsg('Email read')
-                        emailService.save(this.email)
+                        // showSuccessMsg('Email read')
+                        emailService.save({ ...this.email })
+
                     }
                 })
                 .catch(err => {
                     // showErrorMsg('Email remove failed')
-                    console.log('Email\'s already read')
+                    console.log(err)
                 })
         },
     }
