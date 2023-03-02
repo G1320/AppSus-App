@@ -13,9 +13,8 @@ export default {
           
             <h2>Inbox :</h2>
             <RouterView></RouterView>
-           
-          
         </section>
+        <section class="email-compose">this is the email compose section</section>
     `,
   created() {
     emailService.query()
@@ -25,6 +24,16 @@ export default {
     return {
       emails: null,
 
+    }
+  },
+  computed: {
+    compose() {
+      return this.$route.params
+    }
+  },
+  watch: {
+    compose() {
+      console.log('params Changed!')
     }
   },
   methods: {
