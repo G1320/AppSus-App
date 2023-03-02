@@ -5,7 +5,7 @@ import LongTxt from '../cmps/LongTxt.js';
 export default {
   template: `
 
-        <section v-if="note" :style="styleObject" class="note-details">
+        <section v-if="note" class="note-details">
           <img :src="note.thumbnail">
           <h1>Hello</h1>
           <pre>{{ note }} </pre>
@@ -36,26 +36,26 @@ export default {
         fontSize: '13px',
       },
       note: null,
-      note: {},
     };
   },
   created() {
+    const { noteId } = this.$route.params;
     console.log('Params:', this.$route.params);
-    this.loadNote();
+    this.loadNote(noteId);
   },
-  computed: {
-    noteId() {
-      return this.$route.params.noteId;
-    },
-  },
+  // computed: {
+  //   noteId() {
+  //     return this.$route.params.noteId;
+  //   },
+  // },
   watch: {
     noteId() {
       this.loadNote();
     },
   },
   methods: {
-    loadNote() {
-      noteService.get(this.noteId).then((note) => (this.note = note));
+    loadNote(id) {
+      noteService.get(id).then((note) => (this.note = note));
     },
   },
   components: {

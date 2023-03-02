@@ -31,11 +31,16 @@ margin: auto;
   border: 2px solid purple;
 }
 
-.note-preview{
+.keep-note-preview{
   border: 2px solid purple;
   
+  min-height: 5svh;
 }
 
-.note-txt{
+.keep-note-preview > img {
+  max-height: 10svh;
+}
+
+.keep-note-txt{
   min-height: 5svh;
 }

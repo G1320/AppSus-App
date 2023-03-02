@@ -26,10 +26,11 @@ export default {
                 @remove="removeNote" 
                 @show-details="showNoteDetails" />
             <!-- <noteEdit @note-saved="onSaveNote"/> -->
-            <noteDetails 
+            <RouterView></RouterView>
+            <!-- <noteDetails 
                 v-if="selectedNote" 
                 @hide-details="selectedNote = null"
-                :note="selectedNote"/>
+                :note="selectedNote"/> -->
         </section>
         </main>
 

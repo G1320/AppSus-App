@@ -24,15 +24,14 @@ const options = {
     {
       path: '/note',
       component: NoteIndex,
+      children: [
+        {
+          path: '/note/:noteId',
+          component: NoteDetails,
+        },
+      ],
     },
-    {
-      path: '/note/:noteId',
-      component: NoteDetails,
-    },
-    // {
-    //   path: '/note/edit/:noteId?',
-    //   component: NoteEdit,
-    // },
+
     {
       path: '/email',
       component: EmailIndex,
