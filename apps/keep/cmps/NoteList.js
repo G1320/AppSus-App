@@ -7,7 +7,7 @@ export default {
         <section class="note-list">
         <div class="keep-add-note">
                 <!-- <AddReview  @save-review="saveReview"/> -->
-
+</div>
         <!-- <p>
           i AM Component add note
         </p> -->
@@ -25,6 +25,7 @@ export default {
 
 
     `,
+    
   methods: {
     remove(noteId) {
       this.$emit('remove', noteId);

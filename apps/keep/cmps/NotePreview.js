@@ -1,4 +1,5 @@
 import NoteTxt from './NoteTxt.js';
+import NoteImg from './NoteImg.js';
 
 export default {
   props: ['note'],
@@ -10,7 +11,7 @@ export default {
                 <!-- <h3> {{ note.title }}</h3> -->
 
 
-              <component @update-info="onUpdate" :is="note.type" :info="note.info" > </component>
+              <component  @update-info="onUpdate" :is="note.type" :info="note.info" > </component>
           </article>
       `,
 
@@ -27,5 +28,6 @@ export default {
   },
   components: {
     NoteTxt,
+    NoteImg,
   },
 };

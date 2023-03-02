@@ -14,7 +14,7 @@ export default {
     `,
   data() {
     return {
-      note: noteService.getEmptyNote(),
+      // note: noteService.getEmptyNote(),
     };
   },
   created() {

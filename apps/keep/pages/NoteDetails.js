@@ -5,22 +5,25 @@ import LongTxt from '../cmps/LongTxt.js';
 export default {
   template: `
 
-        <section v-if="note" class="note-details">
+        <section v-if="note" :style="styleObject" class="note-details">
           <img :src="note.thumbnail">
+          <h1>Hello</h1>
+          <pre>{{ note }} </pre>
+          <img :src="note.info.url">
+
           <h2>{{ note.id }}</h2>
-            <LongTxt :txt="note.description"/>
+          <h2>{{ note.type }}</h2>
+          <h2>{{ note.isPinned }}</h2>
+            <!-- <LongTxt :txt="note.description"/> -->
             <!-- <p><strong>Authors:</strong> {{ note.authors.join(', ') }}</p> -->
             <!-- <p><strong>Categories:</strong> {{ note.categories.join(', ') }}</p> -->
             <!-- <p><strong>Language:</strong> {{ note.language }}</p> -->
-            <nav>
+            <!-- <nav> -->
             <RouterLink :to="'/note/' + note.prevNoteId">Previous Note</RouterLink> |
                 <RouterLink :to="'/note/' + note.nextNoteId">Next Note</RouterLink>
                 <hr />
-
                 <RouterLink to="/note">Back to list</RouterLink>
-
-            </nav>
-            <!-- <RouterLink to="/note/note">Back to list</RouterLink> -->
+            <!-- </nav> -->
 
 
         </section>
@@ -28,6 +31,10 @@ export default {
     `,
   data() {
     return {
+      styleObject: {
+        backgroundColor: 'purple',
+        fontSize: '13px',
+      },
       note: null,
       note: {},
     };

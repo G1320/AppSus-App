@@ -35,3 +35,7 @@ margin: auto;
   border: 2px solid purple;
   
 }
+
+.note-txt{
+  min-height: 5svh;
+}
