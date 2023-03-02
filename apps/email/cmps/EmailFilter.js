@@ -7,18 +7,19 @@ export default {
                 v-model="filterBy.subject"
                 placeholder="Search"
                 type="text" />
+                <input 
+                v-model="filterBy.unread"
+                type="checkbox"
+                ><span class="range-number">Unread</span>
                 
         </section>
     `,
     data() {
         return {
-            filterBy: { subject: '' },
+            filterBy: { subject: '', unread: true }
         }
     },
     methods: {
-        filter() {
-            this.$emit('filter', this.filterBy)
-        }
     },
     watch: {
         filterBy: {

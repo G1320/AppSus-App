@@ -18,7 +18,8 @@ const email = {
     sentAt: Date.now(),
     removedAt: null,
     from: 'momo@momo.com',
-    to: loggedinUser.email
+    to: loggedinUser.email,
+    tab: ''
 }
 
 
@@ -35,12 +36,12 @@ export const emailService = {
 function query(filterBy = {}) {
     return storageService.query(EMAIL_KEY)
         .then(emails => {
-            if (filterBy.txt) {
+            if (filterBy.subject) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter(email => regex.test(email.subject))
             }
-            if (filterBy.minSpeed) {
-                emails = emails.filter(email => email.body >= filterBy.minSpeed)
+            if (filterBy.unread) {
+                emails = emails.filter(email => !email.isRead)
             }
             return emails
         })
@@ -64,9 +65,9 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(subject = '', body = 0) {
+function getEmptyEmail(subject = '', tab = '', body = '') {
     // return { id: '', subject, body }
-    return { id: '', subject, body, isRead: false, sentAt: Date.now(), removedAt: null, from: 'random@gmail.com', to: 'me@gmail.com' }
+    return { id: '', subject, tab, body, isRead: false, sentAt: Date.now(), removedAt: null, from: 'random@gmail.com', to: '' }
 }
 
 function _createEmails() {
@@ -74,15 +75,15 @@ function _createEmails() {
     if (!emails || !emails.length) {
         emails = []
         emails.push(_createEmail('Welcome to YouTube'))
-        emails.push(_createEmail('Your subscription has expired'))
-        emails.push(_createEmail('Your Facebook friend wants to let you know'))
+        emails.push(_createEmail('Your subscription has expired', 'trash'))
+        emails.push(_createEmail('Your Facebook friend wants to let you know', 'trash'))
         emails.push(_createEmail('Get one month free trial at Spotify Music'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
 }
 
-function _createEmail(subject, body = 'the body of the E-Mail') {
-    const email = getEmptyEmail(subject, body)
+function _createEmail(subject, tab, body = 'the body of the E-Mail') {
+    const email = getEmptyEmail(subject, tab, body)
     email.id = utilService.makeId()
     return email
 }

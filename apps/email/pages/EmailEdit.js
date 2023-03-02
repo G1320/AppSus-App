@@ -5,11 +5,12 @@ import { eventBus, showErrorMsg, showSuccessMsg } from '../../../services/event-
 export default {
     template: `
         <section class="email-edit">
-            <h2>{{(email.id)? 'Edit' : 'Add'}} an email</h2>
+            <p class="new-email-p">New Email</p>
             <form @submit.prevent="save">
-                <input type="text" v-model="email.subject" placeholder="Subject">
-                <input type="text" v-model="email.body" placeholder="Body">
-                <button>Save</button>
+                <input class="email-add-input" type="text" v-model="email.to" placeholder="Recipient">
+                <input class="email-add-input" type="text" v-model="email.subject" placeholder="Subject">
+                <input class="email-add-input" type="text" v-model="email.body" placeholder="Message">
+                <button>Send</button>
             </form>
         </section>
     `,

@@ -2,20 +2,9 @@ export default {
     props: ['email'],
     template: `
         <article class="email-preview">
-            <h2>{{ email.subject }}</h2>
-            <!-- <h3>{{ email.body }}</h3> -->
+            <p class="unread-p" v-if="!email.isRead">Unread</p>
+            <p>{{ email.from }}</p>
+            <p class="email-subject">{{ email.subject }}</p>
         </article>
     `,
 }
-
-
-
-// export default {
-//     props: ['email'],
-//     template: `
-//         <article class="email-preview">
-//             <h2>{{ email.subject }}</h2>
-//             <h3>{{ email.body }}</h3>
-//         </article>
-//     `,
-// }

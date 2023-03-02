@@ -7,17 +7,16 @@ export default {
     name: 'EmailList',
     template: `
 
-    <!-- <pre>{{emails}}</pre> -->
         <section v-if="emails" class="email-list">
             Emails: {{emails.length}}
             Unread: {{getUnread}}
-            <ul>
-                <li v-for="email in emails" :key="email.id">
-                    <pre>is Read: {{email.isRead}}</pre>
+            <ul class="clean-list">
+                <li v-for="email in filteredEmails" :key="email.id" class="email">
                     <EmailPreview :email="email"/>
-                    <RouterLink :to="'/email/'+email.id">Details</RouterLink> |
-                    <RouterLink :to="'/email/edit/'+email.id">Edit</RouterLink> |
-                   <button @click="removeEmail(email.id)">x</button>
+                    <div className="preview-btns-container">
+                        <RouterLink :to="'/email/'+email.id">Details</RouterLink>
+                        <button @click="removeEmail(email.id)">x</button>
+                    </div>
                 </li>
             </ul>
         </section>
@@ -30,9 +29,11 @@ export default {
     },
     data() {
         return {
-            // emails : filteredEmails,
             emails: [],
-            filterBy: {}
+            filterBy: {
+                tab: '',
+                subject: ''
+            }
         }
     },
     methods: {
@@ -67,9 +68,9 @@ export default {
                     console.log('Email\'s already read')
                 })
         },
-        setFilterBy(filterBy) {
-            console.log('', filterBy);
-            this.filterBy = filterBy
+        setFilterBy(filter) {
+            console.log('setFilter', filter);
+            this.filterBy = { ...this.filterBy, ...filter, tab: this.filterBy.tab }
         },
         onSave(email) {
             console.log(email)
@@ -90,11 +91,54 @@ export default {
     },
     computed: {
         filteredEmails() {
-            const regex = new RegExp(this.filterBy.subject, 'i')
-            return this.emails.filter(email => regex.test(email.subject))
+            console.log('this.filterBy', this.filterBy)
+            console.log('this.emails', this.emails)
+            console.log('[...this.emails]', [...this.emails])
+
+
+            if (!this.filterBy) return this.emails
+            // inbox
+
+            let filterdMaEmail = this.emails
+
+            if (this.filterBy.subject) {
+                const regex = new RegExp(this.filterBy.subject, 'i')
+                filterdMaEmail = filterdMaEmail.filter(email => regex.test(email.subject))
+            }
+            if (this.filterBy.unread) {
+                filterdMaEmail = filterdMaEmail.filter(email => email.isRead === this.filterBy.unread)
+            }
+            if (this.filterBy.tab) {
+                if (this.filterBy.tab === 'inbox') {
+                    return
+                }
+                else {
+                    console.log('filter by tab', this.filterBy);
+                    filterdMaEmail = filterdMaEmail.filter(email => email.tab === this.filterBy.tab)
+                }
+            }
+            // this.emails=[...this.emails]
+
+            return filterdMaEmail
         },
         getUnread() {
             return this.emails.filter(email => !email.isRead).length
+        }
+    },
+    watch: {
+        $route: {
+            handler(newValue, oldValue) {
+                console.log('', oldValue);
+                console.log('', newValue);
+                const { tab } = this.$route.query
+                if (!tab) return
+                console.log('tab:', tab)
+                this.filterBy.tab = tab
+                // Note: `newValue` will be equal to `oldValue` here
+                // on nested mutations as long as the object itself
+                // hasn't been replaced.
+            },
+            deep: true
         }
     },
 

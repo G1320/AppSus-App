@@ -2,6 +2,8 @@ import { emailService } from './../services/email.service.js';
 
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
+import EmailEdit from '../pages/EmailEdit.js'
+import EmailCategories from '../cmps/EmailCategories.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
@@ -10,12 +12,9 @@ export default {
       <main class="email-main-content">
 
         <div class="email-filter-list">
-          <RouterLink @click="handleCompose" to="/email/edit">Compose</RouterLink>
-          <p>I AM INBOX</p>
-          <p>I AM STARRED</p>
-          <p>I AM SENT</p>
-          <p>I AM DRAFT</p>
-          <p>I AM TRASH</p>
+          <h1 class="logo" >CoeMail</h1>
+          <RouterLink class="compose"@click="handleCompose" to="/email/edit">Compose</RouterLink>
+          <EmailCategories />
         </div>
 
           <section class="email-index">
@@ -61,8 +60,10 @@ export default {
     }
   },
   components: {
+    EmailEdit,
     EmailFilter,
     EmailList,
+    EmailCategories,
   }
 }
 
