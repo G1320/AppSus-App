@@ -32,11 +32,6 @@ export const emailService = {
     getEmptyEmail,
 }
 
-function check() {
-    let x = utilService.makeLorem(5)
-    console.log('check:', x)
-}
-
 function query(filterBy = {}) {
     return storageService.query(EMAIL_KEY)
         .then(emails => {

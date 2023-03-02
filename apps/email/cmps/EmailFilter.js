@@ -8,10 +8,6 @@ export default {
                 placeholder="Search"
                 type="text" />
                 
-            <!-- <input 
-                v-model.number="filterBy.body"
-                placeholder="Max speed"
-                type="number" /> -->
         </section>
     `,
     data() {
@@ -28,7 +24,7 @@ export default {
         filterBy: {
             handler() {
                 console.log('filterBy changed', this.filterBy)
-                eventBus.emit('filter', {...this.filterBy})
+                eventBus.emit('filter', { ...this.filterBy })
             },
             deep: true
         },

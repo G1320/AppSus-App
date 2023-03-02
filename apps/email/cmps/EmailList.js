@@ -1,6 +1,7 @@
 import EmailPreview from './EmailPreview.js'
 import { eventBus } from '../../../services/event-bus.service.js'
 import { emailService } from '../services/email.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
     name: 'EmailList',
@@ -16,7 +17,7 @@ export default {
                     <EmailPreview :email="email"/>
                     <RouterLink :to="'/email/'+email.id">Details</RouterLink> |
                     <RouterLink :to="'/email/edit/'+email.id">Edit</RouterLink> |
-                   <button @click="remove(email.id)">x</button>
+                   <button @click="removeEmail(email.id)">x</button>
                 </li>
             </ul>
         </section>
@@ -25,14 +26,20 @@ export default {
         emailService.query()
             .then(emails => this.emails = emails)
         eventBus.on('filter', this.setFilterBy)
+        eventBus.on('save', this.onSave)
     },
     data() {
         return {
-            emails: null,
+            // emails : filteredEmails,
+            emails: [],
             filterBy: {}
         }
     },
     methods: {
+        loadEmails() {
+            emailService.query()
+                .then(emails => this.emails = emails)
+        },
         removeEmail(emailId) {
             emailService.remove(emailId)
                 .then(() => {
@@ -62,9 +69,24 @@ export default {
         },
         setFilterBy(filterBy) {
             console.log('', filterBy);
-
-            //   this.filterBy = filterBy
+            this.filterBy = filterBy
         },
+        onSave(email) {
+            console.log(email)
+            emailService.save(email)
+                .then(savedEmail => {
+                    console.log('saved', savedEmail);
+
+                    showSuccessMsg('Email saved')
+                    this.emails.push(savedEmail)
+
+
+                })
+                .catch(err => {
+                    showErrorMsg('Email save failed')
+                })
+            this.$router.push({ path: '/email/list' });
+        }
     },
     computed: {
         filteredEmails() {

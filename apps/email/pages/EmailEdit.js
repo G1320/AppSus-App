@@ -1,5 +1,5 @@
 import { emailService } from '../services/email.service.js'
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import { eventBus, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 
 export default {
@@ -27,15 +27,7 @@ export default {
     },
     methods: {
         save() {
-            emailService.save(this.email)
-                .then(savedEmail => {
-                    // console.log('Email saved', savedEmail)
-                    showSuccessMsg('Email saved')
-                    this.$router.push('/email')
-                })
-                .catch(err => {
-                    showErrorMsg('Email save failed')
-                })
+            eventBus.emit('save', { ...this.email })
         }
     }
 }
