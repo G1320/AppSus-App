@@ -1,15 +1,26 @@
 export default {
   name: 'NoteTxt',
   props: ['info'],
-  emits: ['update-info'],
+  // emits: ['update-info'],
   template: `
-    <!-- <h1>IM THE BEST NOTE TXT EVER</h1> -->
-    <h1>{{ info.txt }}</h1>
+  <div   >
+ <!-- :style="{backgroundColor: info.style.backgroundColor}" -->
+    <!-- <img :src="info.url"> -->
+    
+    <h1 contentEditable="true">{{ info.txt }}</h1>
+  </div>
           `,
   components: {},
-  created() {},
+  created() {
+    console.log(this.info);
+  },
   data() {
-    return {};
+    return {
+      styleObject: {
+        // backgroundColor: this.style,
+        fontSize: '13px',
+      },
+    };
   },
   methods: {},
   computed: {},

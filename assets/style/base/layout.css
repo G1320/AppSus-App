@@ -60,7 +60,30 @@
   border: 2px solid purple;
 }
 
-.note-preview {
+.keep-note-preview {
   border: 2px solid purple;
+  
+  min-height: 5svh;
+}
 
+.keep-note-preview > img {
+  max-height: 10svh;
+}
+
+.keep-note-txt{
+  min-height: 5svh;
+
+}
+.keep-note-preview{
+  border: 2px solid purple;
+  
+  min-height: 5svh;
+}
+
+.keep-note-preview > img {
+  max-height: 10svh;
+}
+
+.keep-note-txt{
+  min-height: 5svh;
 }

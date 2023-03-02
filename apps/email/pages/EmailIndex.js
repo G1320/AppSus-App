@@ -1,9 +1,7 @@
-import { emailService } from './../services/email.service.js'
+import { emailService } from './../services/email.service.js';
 
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
-import EmailEdit from './EmailEdit.js'
-
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
@@ -34,11 +32,13 @@ export default {
           </main>
           `,
   created() {
+    emailService.query()
+      .then(emails => this.emails = emails)
   },
   data() {
     return {
-      emails: [],
-      filterBy: {}
+      emails: null,
+
     }
   },
   computed: {
@@ -48,40 +48,21 @@ export default {
     },
     compose() {
       return this.$route.params
-    },
-
+    }
   },
   watch: {
     compose() {
       console.log('params Changed!')
-      console.log('this.$route.params', this.$route.query)
     }
   },
   methods: {
     handleCompose() {
       this.$router.push({ path: '/email/list', query: { compose: 'new' } });
-    },
-    saveNewEmail(email) {
-      console.log(email)
-      emailService.save(email)
-        .then(savedEmail => {
-          console.log('saved', savedEmail);
-
-          showSuccessMsg('Email saved')
-          this.emails.push(savedEmail)
-
-
-        })
-        .catch(err => {
-          showErrorMsg('Email save failed')
-        })
-      this.$router.push({ path: '/email/list' });
-    },
+    }
   },
   components: {
     EmailFilter,
     EmailList,
-    EmailEdit,
   }
 }
 

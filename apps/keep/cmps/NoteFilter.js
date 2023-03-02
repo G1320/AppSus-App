@@ -10,7 +10,7 @@ export default {
       `,
   data() {
     return {
-      filterBy: { title: '', pageCount: 0 },
+      filterBy: { title: '' },
     };
   },
   methods: {

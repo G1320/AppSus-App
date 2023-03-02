@@ -78,7 +78,6 @@ function _createNotes() {
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
-        title: 'Im the First!',
         style: {
           backgroundColor: '#00d',
         },
@@ -86,18 +85,18 @@ function _createNotes() {
           txt: 'Fullstack Me Baby!',
         },
       },
-      // {
-      //   id: 'n102',
-      //   type: 'NoteImg',
-      //   isPinned: false,
-      //   info: {
-      //     url: 'http://some-img/me',
-      //     title: 'Bobi and Me',
-      //   },
-      //   style: {
-      //     backgroundColor: '#00d',
-      //   },
-      // },
+      {
+        id: 'n102',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+          url: 'https://picsum.photos/seed/200/200',
+          title: 'Bobi and Me',
+        },
+        style: {
+          backgroundColor: '#00d',
+        },
+      },
       // {
       //   id: 'n103',
       //   type: 'NoteTodos',
@@ -115,7 +114,6 @@ function _createNotes() {
         createdAt: 1112255,
         type: 'NoteTxt',
         isPinned: true,
-        title: 'Im the Second!',
 
         style: {
           backgroundColor: '#00d',
@@ -129,13 +127,24 @@ function _createNotes() {
         createdAt: 1112299,
         type: 'NoteTxt',
         isPinned: true,
-        title: 'Im the Third!',
 
         style: {
           backgroundColor: '#00d',
         },
         info: {
           txt: 'Lets take it further!',
+        },
+      },
+      {
+        id: 'n106',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+          url: 'https://picsum.photos/seed/200/250',
+          title: 'Puki and I',
+        },
+        style: {
+          backgroundColor: '#00d',
         },
       },
     ];
