@@ -3,9 +3,9 @@ import { eventBus } from "../../../services/event-bus.service.js"
 export default {
     template: `
         <section class="email-filter">
-            <input 
+            <input class="search-input"
                 v-model="filterBy.subject"
-                placeholder="Search"
+                placeholder="Search mail"
                 type="text" />
                 <input 
                 v-model="filterBy.unread"
