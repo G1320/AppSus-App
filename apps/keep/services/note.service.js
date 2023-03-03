@@ -23,9 +23,9 @@ function query(filterBy = {}) {
       const regex = new RegExp(filterBy.txt, 'i');
       notes = notes.filter((note) => regex.test(note.subject));
     }
-    if (filterBy.minSpeed) {
-      notes = notes.filter((note) => note.body >= filterBy.minSpeed);
-    }
+    // if (filterBy.minSpeed) {
+    //   notes = notes.filter((note) => note.body >= filterBy.minSpeed);
+    // }
     return notes;
   });
 }
@@ -46,24 +46,17 @@ function save(note) {
   }
 }
 
-function getEmptyNote(title = '', price = 0) {
+function getEmptyNote(title = '') {
   return {
-    id: '',
-    title,
-    subtitle: utilService.makeLorem(8),
-    authors: [utilService.makeLorem(2)],
-    categories: [utilService.makeLorem(1), utilService.makeLorem(1)],
-
-    publishedDate: 1920 + Math.random() * 100,
-    description: utilService.makeLorem(20),
-
-    pageCount: Math.random() * 1000,
-    thumbnail: 'https://drmichellebraun.com/wp-content/uploads/2016/10/Note-Placeholder.png',
-    language: 'en',
-    listPrice: {
-      amount: price,
-      currencyCode: 'ILS',
-      isOnSale: true,
+    id: 'n303',
+    createdAt: 33112222,
+    type: 'NoteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      txt: 'The best note ever!',
     },
   };
 }

@@ -5,7 +5,6 @@ export default {
   template: `
   <div   >
  <!-- :style="{backgroundColor: info.style.backgroundColor}" -->
-    <!-- <img :src="info.url"> -->
     
     <h1 contentEditable="true">{{ info.txt }}</h1>
   </div>

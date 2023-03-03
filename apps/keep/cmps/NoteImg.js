@@ -4,7 +4,6 @@ export default {
   emits: ['update-info'],
   template: `
 
-<!-- <h1>IM THE BEST NOTE TXT EVER</h1> -->
 <h1>{{ info.title }}</h1>
 <img :src="info.url">
 

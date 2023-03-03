@@ -17,7 +17,6 @@ export default {
 
   </div>
         <section class="note-index">
-        <RouterLink to="/note/edit">Edit a note</RouterLink>
 
             <noteFilter @filter="setFilterBy"/>
             <noteList 

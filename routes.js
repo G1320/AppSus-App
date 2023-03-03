@@ -6,7 +6,7 @@ import EmailEdit from './apps/email/pages/EmailEdit.js';
 import EmailList from './apps/email/cmps/EmailList.js';
 import NoteIndex from './apps/keep/pages/NoteIndex.js';
 import NoteDetails from './apps/keep/pages/NoteDetails.js';
-// import NoteEdit from './apps/keep/pages/Note.js';
+import NoteEdit from './apps/keep/cmps/NoteEdit.js';
 // import NoteEdit from './apps/keep/cmps/NoteEdit.js';
 
 const { createRouter, createWebHashHistory } = VueRouter;
@@ -28,6 +28,10 @@ const options = {
         {
           path: '/note/:noteId',
           component: NoteDetails,
+        },
+        {
+          path: '/note/edit/:noteId',
+          component: NoteEdit,
         },
       ],
     },

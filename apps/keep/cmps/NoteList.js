@@ -13,7 +13,8 @@ export default {
         </p> -->
             <article>
                 <div v-for="note in notes" :key="note.id">
-
+                    <pre>is pinned: {{ note.isPinned }}</pre>
+                    <pre>created at: {{ note.createdAt }}</pre>
                     <notePreview :note="note"/>
                     <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> |
@@ -26,13 +27,29 @@ export default {
 
 
     `,
-
+  data() {
+    return {
+      // notes: [],
+      filterBy: {},
+    };
+  },
+  computed: {
+    // filteredNotes() {
+    //   const regex = new RegExp(this.filterBy.subject, 'i');
+    //   return this.notes.filter((nate) => regex.test(note.type));
+    // },
+  },
   methods: {
     remove(noteId) {
-      this.$emit('remove', noteId);
+      this.$emit('remove', noteId).then;
+      showSuccessMsg('Email removed');
     },
     showDetails(noteId) {
       this.$emit('show-details', noteId);
+    },
+    setFilterBy(filterBy) {
+      console.log('filterBy: ', filterBy);
+      this.filterBy = filterBy;
     },
   },
   components: {
