@@ -5,7 +5,7 @@ export default {
     props: [],
     template: `
     <div className="categories-container">
-        <button @click ="filterByTab('Inbox')">Inbox</button>
+        <button @click ="filterByTab('inbox')">Inbox</button>
         <button @click ="filterByTab('starred')">Starred</button>
         <button @click ="filterByTab('sent')">Sent</button>
         <button @click ="filterByTab('draft')">Draft</button>
