@@ -1,3 +1,7 @@
+* {
+  font-family: Roboto;
+}
+
 .main-layout {
   margin: 0 auto;
   padding-left: 1.6rem;
@@ -100,15 +104,28 @@
 }
 
 .email-add-input {
+
   border: none;
+}
+
+.email-add-message {
+  resize: none;
+  margin-block-start: 3px;
+  margin-inline-start: 5px;
+  height: 200px;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 .email-add-btn {
   font-weight: bold;
   color: whitesmoke;
   margin-block-start: 10px;
+  margin-block-end: 10px;
   margin-inline-start: 12px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   border-radius: 50px;
   border: none;
@@ -134,11 +151,29 @@
   outline: 1px solid rgb(98, 98, 98);
 }
 
+.email-edit-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-email-close-btn {
+  margin-inline-end: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.new-email-close-btn:hover {
+  color: black;
+}
+
 .email-edit {
+  border: 1px solid rgb(230, 230, 230);
   grid-template-columns: 1fr;
   display: grid;
   align-items: start;
-  margin-block-start: 100%;
+  margin-block-start: 70%;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.1), -5px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
@@ -149,6 +184,27 @@
   border: none;
 }
 
+.list-category {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+.starred {
+  color: gold;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.email-info {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 /* KEEP */

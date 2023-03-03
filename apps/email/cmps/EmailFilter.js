@@ -16,7 +16,7 @@ export default {
     `,
     data() {
         return {
-            filterBy: { subject: '', unread: true }
+            filterBy: { subject: '', unread: false }
         }
     },
     methods: {

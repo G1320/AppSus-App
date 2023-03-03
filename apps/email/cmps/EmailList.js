@@ -6,7 +6,7 @@ import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.servic
 export default {
     name: 'EmailList',
     template: `
-
+        <p class="list-category">{{filterBy.tab}} :</p>
         <section v-if="emails" class="email-list">
             Emails: {{filteredEmails.length}}
             Unread: {{getUnread}}
@@ -15,6 +15,7 @@ export default {
                     <EmailPreview :email="email"/>
                     <div className="preview-btns-container">
                         <RouterLink :to="'/email/'+email.id">Details</RouterLink>
+                        <button v-bind:class="{ 'starred': email.tab === 'starred' }" @click="starEmail(email.id)">star</button>
                         <button @click="removeEmail(email.id)">x</button>
                     </div>
                 </li>
@@ -31,8 +32,9 @@ export default {
         return {
             emails: [],
             filterBy: {
-                tab: '',
-                subject: ''
+                tab: 'inbox',
+                subject: '',
+                unread: false,
             }
         }
     },
@@ -42,14 +44,38 @@ export default {
                 .then(emails => this.emails = emails)
         },
         removeEmail(emailId) {
-            emailService.remove(emailId)
-                .then(() => {
-                    const idx = this.emails.findIndex(email => email.id === emailId)
-                    this.emails.splice(idx, 1)
-                    showSuccessMsg('Email removed')
+            emailService.get(emailId)
+                .then(email => {
+                    if (email.tab !== 'trash') {
+                        email.tab = 'trash'
+                        emailService.save(email)
+                    }
+                    else {
+
+                        emailService.remove(emailId)
+                            .then(() => {
+                                const idx = this.emails.findIndex(email => email.id === emailId)
+                                this.emails.splice(idx, 1)
+                                showSuccessMsg('Email removed')
+                            })
+                            .catch(err => {
+                                showErrorMsg('Email remove failed')
+                            })
+                    }
+                })
+        },
+        starEmail(emailId) {
+            emailService.get(emailId)
+                .then(email => {
+                    if (email.tab !== 'starred') {
+                        email.tab = 'starred'
+                    }
+                    else email.tab = ''
+                    emailService.save(email)
+                    this.emails = [...this.emails]
                 })
                 .catch(err => {
-                    showErrorMsg('Email remove failed')
+                    console.log('Email starring failed')
                 })
         },
         readEmail(emailId) {
@@ -86,7 +112,7 @@ export default {
                 .catch(err => {
                     showErrorMsg('Email save failed')
                 })
-            this.$router.push({ path: '/email/list' });
+            this.$router.push({ path: '/email/list', query: { 'tab': 'sent' } });
         }
     },
     computed: {
@@ -106,11 +132,15 @@ export default {
                 filterdMaEmail = filterdMaEmail.filter(email => regex.test(email.subject))
             }
             if (this.filterBy.unread) {
-                filterdMaEmail = filterdMaEmail.filter(email => email.isRead === this.filterBy.unread)
+                filterdMaEmail = filterdMaEmail.filter(email => email.isRead !== this.filterBy.unread)
             }
             if (this.filterBy.tab) {
                 if (this.filterBy.tab === 'inbox') {
-                    filterdMaEmail = filterdMaEmail
+                    filterdMaEmail = filterdMaEmail.filter(email => email.tab !== 'trash')
+                    filterdMaEmail = filterdMaEmail.filter(email => email.from !== 'me@coemail.com')
+                }
+                else if (this.filterBy.tab === 'sent') {
+                    filterdMaEmail = filterdMaEmail.filter(email => email.from === 'me@coemail.com')
                 }
                 else {
                     console.log('filter by tab', this.filterBy);
