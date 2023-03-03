@@ -76,7 +76,7 @@ function _createEmails() {
         emails = []
         emails.push(_createEmail('Welcome to YouTube'))
         emails.push(_createEmail('Your subscription has expired', 'trash'))
-        emails.push(_createEmail('Your Facebook friend wants to let you know', 'trash'))
+        emails.push(_createEmail('Your Facebook friend wants to let you know', 'draft'))
         emails.push(_createEmail('Get one month free trial at Spotify Music'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }

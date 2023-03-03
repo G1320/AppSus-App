@@ -8,7 +8,7 @@ export default {
     template: `
 
         <section v-if="emails" class="email-list">
-            Emails: {{emails.length}}
+            Emails: {{filteredEmails.length}}
             Unread: {{getUnread}}
             <ul class="clean-list">
                 <li v-for="email in filteredEmails" :key="email.id" class="email">
@@ -110,7 +110,7 @@ export default {
             }
             if (this.filterBy.tab) {
                 if (this.filterBy.tab === 'inbox') {
-                    return
+                    filterdMaEmail = filterdMaEmail
                 }
                 else {
                     console.log('filter by tab', this.filterBy);
@@ -122,7 +122,7 @@ export default {
             return filterdMaEmail
         },
         getUnread() {
-            return this.emails.filter(email => !email.isRead).length
+            return this.filteredEmails.filter(email => !email.isRead).length
         }
     },
     watch: {

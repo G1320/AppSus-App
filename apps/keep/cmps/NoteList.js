@@ -1,4 +1,4 @@
-import notePreview from './notePreview.js';
+import NotePreview from './NotePreview.js';
 
 export default {
   props: ['notes'],
@@ -15,7 +15,7 @@ export default {
                 <div v-for="note in notes" :key="note.id">
                     <pre>is pinned: {{ note.isPinned }}</pre>
                     <pre>created at: {{ note.createdAt }}</pre>
-                    <notePreview :note="note"/>
+                    <NotePreview :note="note"/>
                     <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> |
                     <button hidden @click="showDetails(note.id)">Details</button>
@@ -53,6 +53,6 @@ export default {
     },
   },
   components: {
-    notePreview,
+    NotePreview,
   },
 };
