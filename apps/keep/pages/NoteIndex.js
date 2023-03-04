@@ -3,7 +3,7 @@ import { noteService } from '../services/note.service.js';
 import noteFilter from '../cmps/NoteFilter.js';
 import noteList from '../cmps/NoteList.js';
 
-import NoteDetails from './NoteDetails.js';
+// import NoteDetails from './NoteDetails.js';
 // import noteEdit from './noteEdit.js';
 
 export default {
