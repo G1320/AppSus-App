@@ -3,6 +3,8 @@
 }
 
 .main-layout {
+  /* height: 75svh;
+  width: 95svw; */
   margin: 0 auto;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
@@ -11,8 +13,10 @@
 /* EMAIL */
 
 .email-main-content {
-  height: 100%;
-  width: 100svw;
+  height: 90svh;
+  width: 95svw;
+  /* height: 100%;
+  width: 100svw; */
   display: grid;
   grid-template-columns: 0.25fr 0.5fr 0.25fr;
   grid-template-rows: 1fr;
@@ -21,17 +25,27 @@
 
 .email-filter-list {
   /* border: 2px solid purple; */
-  width: 25svw;
+  width: 15svw;
 }
 
 .email-index {
   /* border: 2px solid purple; */
-  width: 50svw;
+  width: 60svw;
 }
 
 .email-compose {
-  /* border: 2px solid purple; */
+  height: 400;
+  padding-top: 0;
+  width: 300px;
+  /* height: max-content; */
+  /* display: flex; */
+  position: absolute;
+  right: 10svw;
+  /* top: 280px; */
   width: 25svw;
+  z-index: 200;
+  margin-block-start: 3em;
+  margin-block-end: 15svh;
 }
 
 .email-filter {
@@ -41,16 +55,19 @@
 .categories-container {
   margin-block-start: 40px;
   display: grid;
+  gap: 5px;
 }
 
 .compose {
+  /* height: 400px;
+  width: 300px; */
   margin-block-start: 50px;
   margin-top: 50px;
   margin-inline-start: 10px;
   border: 1px solid darkgray;
   padding: 20px;
   border-radius: 14%;
-  background-color: rgb(204, 223, 250);
+  background-color: #c2e7ff;
   border: none;
   text-decoration: none;
   font-weight: 500;
@@ -76,6 +93,7 @@
 }
 
 .logo {
+  cursor: pointer;
   margin-block-start: 15px;
   margin-block-end: 40px;
   margin-inline-start: 20px;
@@ -84,6 +102,7 @@
 .email-preview {
   display: grid;
   gap: 1px;
+  margin-block-end: 5px;
 }
 
 .email-preview p {
@@ -110,7 +129,7 @@
   margin-block-start: 3px;
   margin-inline-start: 5px;
   height: 200px;
-  width: 100%;
+  width: 90%;
   white-space: normal;
   overflow-wrap: break-word;
   line-height: 1.5;
@@ -141,7 +160,23 @@
   display: flex;
   justify-content: space-between;
   gap: 2px;
+  align-items: center;
   /* border: 1px solid rgb(194, 194, 194); */
+}
+
+.category-info {
+  margin-block-end: 20px;
+}
+
+.preview-btns-container {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin-inline-end: 5px;
+}
+
+.email-preview {
+  margin-inline-start: 5px;
 }
 
 .email:hover {
@@ -165,6 +200,10 @@
 }
 
 .email-edit {
+  /* height: 100%; */
+  height: 400px;
+  width: 400px;
+  background-color: whitesmoke;
   border: 1px solid rgb(230, 230, 230);
   grid-template-columns: 1fr;
   display: grid;
@@ -201,6 +240,18 @@
 .email-info {
   display: flex;
   justify-content: space-between;
+}
+
+.email:hover {
+  cursor: pointer;
+}
+
+.preview-btns-container {
+  opacity: 0;
+}
+
+.email:hover .preview-btns-container {
+  opacity: 1;
 }
 
 /* KEEP */

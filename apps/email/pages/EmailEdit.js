@@ -5,7 +5,7 @@ import { eventBus, showErrorMsg, showSuccessMsg } from '../../../services/event-
 export default {
     template: `
         <section class="email-edit">
-            <div className="email-edit-header">
+            <div class="email-edit-header">
                 <span class="new-email-p">New Email</span>
                 <RouterLink @click="saveDraft" class="new-email-close-btn" :to="'/email/list'">x</RouterLink>
             </div>
