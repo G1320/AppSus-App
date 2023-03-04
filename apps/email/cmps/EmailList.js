@@ -62,6 +62,10 @@ export default {
                     if (email.tab !== 'trash') {
                         email.tab = 'trash'
                         emailService.save(email)
+                            .then(savedEmail => {
+                                const idx = this.emails.findIndex(email => email.id === emailId)
+                                this.emails[idx] = savedEmail
+                            })
                         this.$router.push({ path: '/email/list' });
                     }
                     else {
@@ -87,7 +91,10 @@ export default {
                     }
                     else email.tab = ''
                     emailService.save(email)
-                    this.emails = [...this.emails]
+                        .then(savedEmail => {
+                            const idx = this.emails.findIndex(email => email.id === emailId)
+                            this.emails[idx] = savedEmail
+                        })
                 })
                 .catch(err => {
                     console.log('Email starring failed')
