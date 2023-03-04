@@ -96,7 +96,5 @@ delete
   components: {
     noteFilter,
     noteList,
-    // noteDetails,
-    // noteEdit,
   },
 };
