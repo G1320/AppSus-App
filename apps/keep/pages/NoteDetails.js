@@ -8,12 +8,14 @@ export default {
   <img v-if="note.info.url" :src="note.info.url">
           <h2 v-if="note.isPinned" @click="note.isPinned = !note.isPinned "   class="pinned-indication"> I'm pinned!</h2>
 
-          <textarea @blur="save" class="note-details-title" v-model="note.info.title" contentEditable="true">
+          <textarea :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-title" v-model="note.info.title" contentEditable="true" value="note.info.txt">
             </textarea>
-          <textarea @blur="save" class="note-detail-text-area" type="text" v-model="note.info.txt" placeholder="Txt">
-            </textarea>
+            <textarea v-if="note.info.txt" :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-text" v-model="note.info.txt" contentEditable="true" placeholder="note.info.txt">
+              </textarea>
+            <textarea v-else :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-text" v-model="note.info.imgTitle" contentEditable="true" placeholder="note.info.imgTitle">
+              </textarea>
           <input @change="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
-          <RouterLink to="/note">
+          <RouterLink @click="save"  to="/note">
             <span class="material-symbols-outlined">
               close
               </span>

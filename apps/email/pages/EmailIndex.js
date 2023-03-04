@@ -1,10 +1,10 @@
 import { emailService } from './../services/email.service.js';
 
-import EmailFilter from '../cmps/EmailFilter.js'
-import EmailList from '../cmps/EmailList.js'
-import EmailEdit from '../pages/EmailEdit.js'
-import EmailCategories from '../cmps/EmailCategories.js'
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import EmailFilter from '../cmps/EmailFilter.js';
+import EmailList from '../cmps/EmailList.js';
+import EmailEdit from '../pages/EmailEdit.js';
+import EmailCategories from '../cmps/EmailCategories.js';
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
 export default {
   name: 'EmailIndex',
@@ -31,39 +31,35 @@ export default {
           </main>
           `,
   created() {
-    emailService.query()
-      .then(emails => this.emails = emails)
+    emailService.query().then((emails) => (this.emails = emails));
   },
   data() {
     return {
       emails: null,
-
-    }
+    };
   },
   computed: {
-
     setCompose() {
-      return (this.$route.query.compose === 'new')
+      return this.$route.query.compose === 'new';
     },
     compose() {
-      return this.$route.params
-    }
+      return this.$route.params;
+    },
   },
   watch: {
     compose() {
-      console.log('params Changed!')
-    }
+      console.log('params Changed!');
+    },
   },
   methods: {
     handleCompose() {
       this.$router.push({ path: '/email/list', query: { compose: 'new' } });
-    }
+    },
   },
   components: {
     EmailEdit,
     EmailFilter,
     EmailList,
     EmailCategories,
-  }
-}
-
+  },
+};

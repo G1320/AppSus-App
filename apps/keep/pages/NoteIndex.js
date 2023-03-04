@@ -11,28 +11,48 @@ export default {
   template: `
     <main class="keep-main-content">
     <div class="keep-filter-list">
-      <p>I AM A REMINDER</p>
-      <p>I AM A EDIT LABEL</p>
-      <p>I AM A ARCHIVE</p>
-      <p>I AM A TRASH</p>
+      <p>
+        <span class="icon material-symbols-outlined">
+          lightbulb
+        </span>
+         Notes
+      </p>
+      <p>
+      <span class="icon material-symbols-outlined">
+          edit
+          </span>
+         Edit labels
+      </p>
+      
+      <p>
+        <span class="icon material-symbols-outlined">
+          notifications
+        </span>
+        Reminder
+    </p>
+      <p>
+      <span class="icon material-symbols-outlined">
+system_update_alt
+</span>
+      Archive</p>
+      <p>
+      <span class="icon material-symbols-outlined">
+delete
+</span>
+       Trash</p>
 
   </div>
         <section class="note-index">
         <RouterView></RouterView>
-<!-- <div class=" note-filter-input-container"> -->
-  
-  <noteFilter @filter="setFilterBy"/>
-  <!-- <RouterLink @click="save" :to="'/note/edit/'+note.id"> Edit</RouterLink> | -->
-<!-- </div> -->
-  <noteList 
-  :notes="filteredNotes" 
-  v-if="notes"
-  @remove="removeNote" 
-  @show-details="showNoteDetails" />
-  <!-- <noteEdit @note-saved="onSaveNote"/> -->
-          <!-- <RouterView></RouterView> -->
 
-         
+         <noteFilter @filter="setFilterBy"/>
+
+         <noteList 
+         :notes="filteredNotes" 
+         v-if="notes"
+         @remove="removeNote" 
+         @show-details="showNoteDetails" />
+
         </section>
         </main>
 

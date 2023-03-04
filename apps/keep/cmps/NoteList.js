@@ -10,17 +10,19 @@ export default {
         <section class="note-list">
           
                 <article  v-for="note in notes"  :style="{backgroundColor: note.style.backgroundColor}" class="keep-note" :key="note.id">
-                      <NotePreview :note="note"/>
-                      <RouterLink  :to="'/note/'+note.id">Details</RouterLink> |
-                      <RouterLink  :to="'/note/edit/'+note.id"> Edit</RouterLink> |
-                     <span @click="remove(note.id)" class="material-symbols-outlined">
+               <NotePreview :note="note"/>
+                     
+          <div class="note-preview-icon-wrapper">
+          <input @input="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
+
+            <RouterLink  :to="'/note/'+note.id">Details</RouterLink> 
+             <!-- <RouterLink  :to="'/note/edit/'+note.id"> Edit</RouterLink>  -->
+            <span @click="remove(note.id)" class="material-symbols-outlined">
               close
-              </span>
-\                </article>
-        </section>
-
-
-
+            </span>
+          </div>
+            </article>
+                  </section>
     `,
   data() {
     return {
@@ -42,10 +44,14 @@ export default {
     showDetails(noteId) {
       this.$emit('show-details', noteId);
     },
-    setFilterBy(filterBy) {
-      console.log('filterBy: ', filterBy);
-      this.filterBy = filterBy;
+    setFilterBy(filter) {
+      console.log('setFilter', filter);
+      this.filterBy = { ...this.filterBy, ...filter, catagories: this.filterBy.tab };
     },
+    // setFilterBy(filterBy) {
+    //   console.log('filterBy: ', filterBy);
+    //   this.filterBy = filterBy;
+    // },
     save() {
       noteService.save({ ...this.note });
     },

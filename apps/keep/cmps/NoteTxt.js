@@ -5,10 +5,9 @@ export default {
   props: ['note'],
   // emits: ['update-info'],
   template: ` 
-  <input @blur="save"  class="note-preview-title" v-model="note.info.title" contentEditable="true" placeholder="info.title ">
-  <input @blur="save"  class="note-preview-txt" v-model="note.info.txt" contentEditable="true" placeholder="info.txt ">
-    <input @change="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
 
+  <input :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-title" v-model="note.info.title" contentEditable="true" placeholder="info.title ">
+  <input :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-txt" v-model="note.info.txt" contentEditable="true" placeholder="info.txt ">
     
           `,
   components: {},

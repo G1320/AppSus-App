@@ -156,10 +156,10 @@ function _createNotes() {
         info: {
           title: 'Title',
           url: 'https://source.unsplash.com/random/?hippopotamus&2',
-          imgTitle: 'Average hippos',
+          imgTitle: 'Noice pics!',
         },
         style: {
-          backgroundColor: '#00223d',
+          backgroundColor: '#4fcec0',
         },
       },
       {
@@ -183,11 +183,11 @@ function _createNotes() {
         isPinned: true,
 
         style: {
-          backgroundColor: '#3733a0',
+          backgroundColor: '#894c8c',
         },
         info: {
-          title: 'Hippos are great',
-          txt: 'Gotta love the hippos',
+          title: 'title',
+          txt: 'Get groceries',
         },
       },
       {
@@ -198,7 +198,7 @@ function _createNotes() {
         info: {
           title: 'Title',
           url: 'https://source.unsplash.com/random/?hippopotamus&3',
-          imgTitle: 'Best hippos',
+          imgTitle: 'Remember that?',
         },
         style: {
           backgroundColor: '#8a23e7',
@@ -210,14 +210,28 @@ function _createNotes() {
         isPinned: false,
 
         info: {
-          title: 'Cats are fine',
+          title: '',
           url: 'https://source.unsplash.com/random/?cats&3',
-          imgTitle: 'Decent cats',
+          imgTitle: '',
         },
         style: {
           backgroundColor: '#dc464d',
         },
       },
+      // {
+      //   id: 'n112',
+      //   createdAt: 1112333,
+      //   type: 'NoteTxt',
+      //   isPinned: true,
+
+      //   style: {
+      //     backgroundColor: '#dc464d',
+      //   },
+      //   info: {
+      //     title: 'title',
+      //     txt: 'Get concert tickets',
+      //   },
+      // },
     ];
 
     utilService.saveToStorage(NOTE_KEY, notes);
