@@ -7,7 +7,7 @@ import noteList from '../cmps/NoteList.js';
 // import noteEdit from './noteEdit.js';
 
 export default {
-  name: 'noteDetails',
+  name: 'NoteIndex',
   template: `
     <main class="keep-main-content">
     <div class="keep-filter-list">
@@ -96,7 +96,7 @@ delete
   components: {
     noteFilter,
     noteList,
-    noteDetails,
+    // noteDetails,
     // noteEdit,
   },
 };
