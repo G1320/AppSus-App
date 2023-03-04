@@ -181,6 +181,28 @@
   border: none;
 }
 
+.list-category {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+.starred {
+  color: gold;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.email-info {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* KEEP */
 
 .note-index {
@@ -213,6 +235,7 @@
     columns: auto 250px;
   }
 }
+
 @media (max-width: 690px) {
   .note-list {
     height: 80svh;
