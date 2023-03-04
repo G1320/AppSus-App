@@ -5,11 +5,15 @@ import { eventBus, showErrorMsg, showSuccessMsg } from '../../../services/event-
 export default {
     template: `
         <section class="email-edit">
-            <p class="new-email-p">New Email</p>
+            <div className="email-edit-header">
+                <span class="new-email-p">New Email</span>
+                <RouterLink class="new-email-close-btn" :to="'/email/list'">x</RouterLink>
+            </div>
+
             <form class="new-email-form" @submit.prevent="save">
-                <input class="email-add-input" type="text" v-model="email.to" placeholder="Recipient">
-                <input class="email-add-input" type="text" v-model="email.subject" placeholder="Subject">
-                <input class="email-add-input" type="text" v-model="email.body" placeholder="Message">
+                <input class="email-add-input email-add-recipient" type="text" v-model="email.to" placeholder="Recipient">
+                <input class="email-add-input email-add-subjest" type="text" v-model="email.subject" placeholder="Subject">
+                <textarea class="email-add-input email-add-message" type="text" v-model="email.body" placeholder="Message"></textarea>
                 <button class="email-add-btn" >Send</button>
             </form>
         </section>

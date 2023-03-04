@@ -22,7 +22,7 @@ export default {
               <EmailFilter/>
             </section>
             
-            <h2>Inbox :</h2>
+
             <RouterView></RouterView>
           </section>
           <section v-if="setCompose" class="email-compose">

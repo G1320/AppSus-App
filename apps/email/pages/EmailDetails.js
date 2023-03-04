@@ -4,7 +4,12 @@ export default {
     template: `
         <section class="email-details" v-if="email">
             <h2>{{ email.subject }}</h2>
-            <h3>{{ email.body }}</h3>
+            <div className="email-info">
+                <p>From : {{ email.from }}</p>
+                <p>{{emailTime}}</p>
+            </div>
+            <p>to me</p>
+            <p>{{ email.body }}</p>
             <pre>
                 {{email}}
             </pre>  
@@ -28,7 +33,12 @@ export default {
         this.readEmail(id)
     },
     computed: {
-
+        emailTime() {
+            const date = new Date(this.email.sentAt)
+            const hours = date.getHours()
+            const minutes = date.getMinutes()
+            return `${hours}:${minutes}`
+        }
     },
     watch: {
         $route: {

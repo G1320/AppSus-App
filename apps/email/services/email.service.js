@@ -65,25 +65,27 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(subject = '', tab = '', body = '') {
+function getEmptyEmail(subject = '', from = 'me@coemail.com', tab = '', body = '') {
     // return { id: '', subject, body }
-    return { id: '', subject, tab, body, isRead: false, sentAt: Date.now(), removedAt: null, from: 'random@gmail.com', to: '' }
+    return { id: '', subject, from, tab, body, isRead: false, sentAt: Date.now(), removedAt: null, to: '' }
 }
 
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createEmail('Welcome to YouTube'))
-        emails.push(_createEmail('Your subscription has expired', 'trash'))
-        emails.push(_createEmail('Your Facebook friend wants to let you know', 'draft'))
-        emails.push(_createEmail('Get one month free trial at Spotify Music'))
+        emails.push(_createEmail('Welcome to YouTube', 'youtube@coemail.com'))
+        emails.push(_createEmail('Your subscription has expired', 'netflix.coemail.com', 'trash'))
+        emails.push(_createEmail('Your Facebook friend wants to let you know', 'facebook@coemail.com', 'draft'))
+        emails.push(_createEmail('Get one month free trial at Spotify Music', 'spotify@coemail.com'))
+        emails.push(_createEmail('You have been drafted by the "Chicago Bulls"', 'nba@coemail.com'))
+        emails.push(_createEmail('You\'ll have to stop stealing our work', 'gmail@coemail.com'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
 }
 
-function _createEmail(subject, tab, body = 'the body of the E-Mail') {
-    const email = getEmptyEmail(subject, tab, body)
+function _createEmail(subject, from, tab, body = utilService.makeLorem()) {
+    const email = getEmptyEmail(subject, from, tab, body)
     email.id = utilService.makeId()
     return email
 }
