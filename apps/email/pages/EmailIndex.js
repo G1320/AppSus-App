@@ -12,8 +12,8 @@ export default {
       <main class="email-main-content">
 
         <div class="email-filter-list">
-          <h1 class="logo" >CoeMail</h1>
-          <RouterLink class="compose"@click="handleCompose" to="/email/edit">Compose</RouterLink>
+          <h1 class="logo">CoeMail</h1>
+          <RouterLink class="compose" @click="handleCompose" to="/email/edit"> Compose </RouterLink>
           <EmailCategories />
         </div>
 

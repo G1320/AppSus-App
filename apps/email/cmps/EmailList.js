@@ -141,6 +141,7 @@ export default {
                 }
                 else if (this.filterBy.tab === 'sent') {
                     filterdMaEmail = filterdMaEmail.filter(email => email.from === 'me@coemail.com')
+                    filterdMaEmail = filterdMaEmail.filter(email => email.tab !== 'draft')
                 }
                 else {
                     console.log('filter by tab', this.filterBy);

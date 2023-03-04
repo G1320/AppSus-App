@@ -7,7 +7,7 @@ export default {
         <section class="email-edit">
             <div className="email-edit-header">
                 <span class="new-email-p">New Email</span>
-                <RouterLink class="new-email-close-btn" :to="'/email/list'">x</RouterLink>
+                <RouterLink @click="saveDraft" class="new-email-close-btn" :to="'/email/list'">x</RouterLink>
             </div>
 
             <form class="new-email-form" @submit.prevent="save">
@@ -33,6 +33,12 @@ export default {
     methods: {
         save() {
             eventBus.emit('save', { ...this.email })
+        },
+        saveDraft() {
+            this.email.tab = 'draft'
+            eventBus.emit('save', { ...this.email })
+            // console.log('Hi from saveDraft', this.email)
+
         }
     }
 }
