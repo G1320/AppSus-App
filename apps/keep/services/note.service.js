@@ -52,8 +52,9 @@ function getEmptyNote(title = '') {
     createdAt: 33112222,
     type: 'NoteTxt',
     isPinned: true,
+    title: 'Title',
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#b6fb45',
     },
     info: {
       txt: 'The best note ever!',
@@ -72,9 +73,10 @@ function _createNotes() {
         type: 'NoteTxt',
         isPinned: true,
         style: {
-          backgroundColor: '#00d',
+          backgroundColor: '#0a93de',
         },
         info: {
+          title: 'Title',
           txt: 'Fullstack Me Baby!',
         },
       },
@@ -82,12 +84,14 @@ function _createNotes() {
         id: 'n102',
         type: 'NoteImg',
         isPinned: false,
+
         info: {
-          url: 'https://picsum.photos/seed/200/200',
-          title: 'Bobi and Me',
+          title: 'Title',
+          url: 'https://source.unsplash.com/random/?cats&4',
+          imgTitle: 'Bobi and Me',
         },
         style: {
-          backgroundColor: '#00d',
+          backgroundColor: '#fb32bc',
         },
       },
       // {
@@ -109,9 +113,10 @@ function _createNotes() {
         isPinned: true,
 
         style: {
-          backgroundColor: '#00d',
+          backgroundColor: '#fee719',
         },
         info: {
+          title: 'Title',
           txt: 'I think I got it!',
         },
       },
@@ -122,9 +127,10 @@ function _createNotes() {
         isPinned: true,
 
         style: {
-          backgroundColor: '#00d',
+          backgroundColor: '#ab7bd0',
         },
         info: {
+          title: 'Title',
           txt: 'Lets take it further!',
         },
       },
@@ -132,12 +138,84 @@ function _createNotes() {
         id: 'n106',
         type: 'NoteImg',
         isPinned: false,
+
         info: {
-          url: 'https://picsum.photos/seed/200/250',
-          title: 'Puki and I',
+          title: 'Title',
+          url: 'https://source.unsplash.com/random/?zoo&2',
+          imgTitle: 'Puki and I',
         },
         style: {
-          backgroundColor: '#00d',
+          backgroundColor: '#00223d',
+        },
+      },
+      {
+        id: 'n107',
+        type: 'NoteImg',
+        isPinned: false,
+
+        info: {
+          title: 'Title',
+          url: 'https://source.unsplash.com/random/?hippopotamus&2',
+          imgTitle: 'Average hippos',
+        },
+        style: {
+          backgroundColor: '#00223d',
+        },
+      },
+      {
+        id: 'n108',
+        createdAt: 1112333,
+        type: 'NoteTxt',
+        isPinned: true,
+
+        style: {
+          backgroundColor: '#3733a0',
+        },
+        info: {
+          title: 'Title',
+          txt: 'Bring out some color!',
+        },
+      },
+      {
+        id: 'n109',
+        createdAt: 1112333,
+        type: 'NoteTxt',
+        isPinned: true,
+
+        style: {
+          backgroundColor: '#3733a0',
+        },
+        info: {
+          title: 'Hippos are great',
+          txt: 'Gotta love the hippos',
+        },
+      },
+      {
+        id: 'n110',
+        type: 'NoteImg',
+        isPinned: false,
+
+        info: {
+          title: 'Title',
+          url: 'https://source.unsplash.com/random/?hippopotamus&3',
+          imgTitle: 'Best hippos',
+        },
+        style: {
+          backgroundColor: '#8a23e7',
+        },
+      },
+      {
+        id: 'n111',
+        type: 'NoteImg',
+        isPinned: false,
+
+        info: {
+          title: 'Cats are fine',
+          url: 'https://source.unsplash.com/random/?cats&3',
+          imgTitle: 'Decent cats',
+        },
+        style: {
+          backgroundColor: '#dc464d',
         },
       },
     ];

@@ -2,12 +2,11 @@ import NoteTxt from './NoteTxt.js';
 import NoteImg from './NoteImg.js';
 
 export default {
+  name: 'notePreview',
   props: ['note'],
   template: `
-          <article class="keep-note-preview">
-              <component   :is="note.type" :info="note.info" > </component>
+              <component :is="note.type" :note="note"> </component>
               <!-- @update-info="onUpdate" -->
-          </article>
       `,
 
   computed: {},

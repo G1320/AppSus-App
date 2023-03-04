@@ -3,10 +3,11 @@ import { noteService } from '../services/note.service.js';
 import noteFilter from '../cmps/NoteFilter.js';
 import noteList from '../cmps/NoteList.js';
 
-// import noteDetails from './oteDetails.js';
+import noteDetails from './noteDetails.js';
 // import noteEdit from './noteEdit.js';
 
 export default {
+  name: 'noteDetails',
   template: `
     <main class="keep-main-content">
     <div class="keep-filter-list">
@@ -17,19 +18,21 @@ export default {
 
   </div>
         <section class="note-index">
+        <RouterView></RouterView>
+<!-- <div class=" note-filter-input-container"> -->
+  
+  <noteFilter @filter="setFilterBy"/>
+  <!-- <RouterLink @click="save" :to="'/note/edit/'+note.id"> Edit</RouterLink> | -->
+<!-- </div> -->
+  <noteList 
+  :notes="filteredNotes" 
+  v-if="notes"
+  @remove="removeNote" 
+  @show-details="showNoteDetails" />
+  <!-- <noteEdit @note-saved="onSaveNote"/> -->
+          <!-- <RouterView></RouterView> -->
 
-            <noteFilter @filter="setFilterBy"/>
-            <noteList 
-                :notes="filteredNotes" 
-                v-if="notes"
-                @remove="removeNote" 
-                @show-details="showNoteDetails" />
-            <!-- <noteEdit @note-saved="onSaveNote"/> -->
-            <RouterView></RouterView>
-            <!-- <noteDetails 
-                v-if="selectedNote" 
-                @hide-details="selectedNote = null"
-                :note="selectedNote"/> -->
+         
         </section>
         </main>
 
@@ -57,6 +60,9 @@ export default {
     setFilterBy(filterBy) {
       this.filterBy = filterBy;
     },
+    save() {
+      noteService.save({ ...this.note });
+    },
   },
   computed: {
     filteredNotes() {
@@ -70,7 +76,7 @@ export default {
   components: {
     noteFilter,
     noteList,
-    // oteDetails,
+    noteDetails,
     // noteEdit,
   },
 };
