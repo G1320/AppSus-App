@@ -3,21 +3,20 @@ import { emailService } from "../services/email.service.js"
 export default {
     template: `
         <section class="email-details" v-if="email">
+        <hr />
+        <RouterLink to="/email/list">Back to list</RouterLink>
+        <hr />
             <h2>{{ email.subject }}</h2>
             <div className="email-info">
                 <p>From : {{ email.from }}</p>
                 <p>{{emailTime}}</p>
             </div>
             <p>to me</p>
-            <p>{{ email.body }}</p>
-            <pre>
-                {{email}}
-            </pre>  
+            <p>{{ email.body }}</p> 
+            <hr />
             <nav>
                 <RouterLink :to="'/email/' + email.prevEmailId">Previous Email</RouterLink> |
                 <RouterLink :to="'/email/' + email.nextEmailId">Next Email</RouterLink>
-                <hr />
-                <RouterLink to="/email/list">Back to list</RouterLink>
             </nav>
             <hr />
         </section>

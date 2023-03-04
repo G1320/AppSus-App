@@ -75,11 +75,13 @@ function _createEmails() {
     if (!emails || !emails.length) {
         emails = []
         emails.push(_createEmail('Welcome to YouTube', 'youtube@coemail.com'))
-        emails.push(_createEmail('Your subscription has expired', 'netflix.coemail.com', 'trash'))
-        emails.push(_createEmail('Your Facebook friend wants to let you know', 'facebook@coemail.com', 'draft'))
+        emails.push(_createEmail('Your subscription has expired', 'netflix.coemail.com'))
+        emails.push(_createEmail('Your Facebook friend wants to let you know', 'facebook@coemail.com'))
         emails.push(_createEmail('Get one month free trial at Spotify Music', 'spotify@coemail.com'))
         emails.push(_createEmail('You have been drafted by the "Chicago Bulls"', 'nba@coemail.com'))
         emails.push(_createEmail('You\'ll have to stop stealing our work', 'gmail@coemail.com'))
+        emails.push(_createEmail('Your job application has been accepted', 'nasa@coemail.com'))
+        emails.push(_createEmail('Billie Jean is not my lover', 'michaeljackson@coemail.com'))
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
 }
