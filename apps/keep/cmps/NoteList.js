@@ -1,27 +1,22 @@
 import NotePreview from './NotePreview.js';
+// import { eventBus } from '../../../services/event-bus.service.js';
+import { noteService } from '../services/note.service.js';
 
 export default {
+  name: 'noteList',
   props: ['notes'],
   template: `
     
         <section class="note-list">
-        <div class="keep-add-note">
-                <!-- <AddReview  @save-review="saveReview"/> -->
-</div>
-        <!-- <p>
-          i AM Component add note
-        </p> -->
-            <article>
-                <div v-for="note in notes" :key="note.id">
-                    <pre>is pinned: {{ note.isPinned }}</pre>
-                    <pre>created at: {{ note.createdAt }}</pre>
-                    <NotePreview :note="note"/>
-                    <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
-                    <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> |
-                    <button hidden @click="showDetails(note.id)">Details</button>
-                    <button @click="remove(note.id)">x</button>
-                </div>
-            </article>
+          
+                <article  v-for="note in notes"  :style="{backgroundColor: note.style.backgroundColor}" class="keep-note" :key="note.id">
+                      <NotePreview :note="note"/>
+                      <RouterLink  :to="'/note/'+note.id">Details</RouterLink> |
+                      <RouterLink  :to="'/note/edit/'+note.id"> Edit</RouterLink> |
+                     <span @click="remove(note.id)" class="material-symbols-outlined">
+              close
+              </span>
+\                </article>
         </section>
 
 
@@ -34,10 +29,10 @@ export default {
     };
   },
   computed: {
-    // filteredNotes() {
-    //   const regex = new RegExp(this.filterBy.subject, 'i');
-    //   return this.notes.filter((nate) => regex.test(note.type));
-    // },
+    filteredNotes() {
+      const regex = new RegExp(this.filterBy.createdAt, 'i');
+      return this.notes.filter((note) => regex.test(note.type));
+    },
   },
   methods: {
     remove(noteId) {
@@ -51,8 +46,12 @@ export default {
       console.log('filterBy: ', filterBy);
       this.filterBy = filterBy;
     },
+    save() {
+      noteService.save({ ...this.note });
+    },
   },
   components: {
     NotePreview,
+    noteService,
   },
 };

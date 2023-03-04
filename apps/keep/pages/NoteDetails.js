@@ -1,53 +1,37 @@
 import { noteService } from '../services/note.service.js';
-import LongTxt from '../cmps/LongTxt.js';
 
-// import AddNote from '../cmps/AddNote.js';
 export default {
+  name: 'noteDetails',
   template: `
 
-        <section v-if="note" class="note-details">
-          <img :src="note.thumbnail">
-          <h1>Hello</h1>
-          <pre>{{ note }} </pre>
-          <img :src="note.info.url">
+<section v-if="note" :style="{backgroundColor: note.style.backgroundColor}" class="note-details keep-modal">
+  <img v-if="note.info.url" :src="note.info.url">
+          <h2 v-if="note.isPinned" @click="note.isPinned = !note.isPinned "   class="pinned-indication"> I'm pinned!</h2>
 
-          <h2>{{ note.id }}</h2>
-          <h2>{{ note.type }}</h2>
-          <h2>{{ note.isPinned }}</h2>
-            <!-- <LongTxt :txt="note.description"/> -->
-            <!-- <p><strong>Authors:</strong> {{ note.authors.join(', ') }}</p> -->
-            <!-- <p><strong>Categories:</strong> {{ note.categories.join(', ') }}</p> -->
-            <!-- <p><strong>Language:</strong> {{ note.language }}</p> -->
-            <!-- <nav> -->
-            <RouterLink :to="'/note/' + note.prevNoteId">Previous Note</RouterLink> |
-                <RouterLink :to="'/note/' + note.nextNoteId">Next Note</RouterLink>
-                <hr />
-                <RouterLink to="/note">Back to list</RouterLink>
-            <!-- </nav> -->
-
-
+          <textarea @blur="save" class="note-details-title" v-model="note.info.title" contentEditable="true">
+            </textarea>
+          <textarea @blur="save" class="note-detail-text-area" type="text" v-model="note.info.txt" placeholder="Txt">
+            </textarea>
+          <input @change="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
+          <RouterLink to="/note">
+            <span class="material-symbols-outlined">
+              close
+              </span>
+            </RouterLink>
         </section>
         
     `,
   data() {
     return {
-      styleObject: {
-        backgroundColor: 'purple',
-        fontSize: '13px',
-      },
       note: null,
     };
   },
   created() {
     const { noteId } = this.$route.params;
+    console.log('noteId: ', noteId);
     console.log('Params:', this.$route.params);
     this.loadNote(noteId);
   },
-  // computed: {
-  //   noteId() {
-  //     return this.$route.params.noteId;
-  //   },
-  // },
   watch: {
     noteId() {
       this.loadNote();
@@ -57,9 +41,9 @@ export default {
     loadNote(id) {
       noteService.get(id).then((note) => (this.note = note));
     },
+    save() {
+      noteService.save({ ...this.note });
+    },
   },
-  components: {
-    LongTxt,
-    // AddNote,
-  },
+  components: {},
 };
