@@ -5,11 +5,29 @@ export default {
     props: [],
     template: `
     <div className="categories-container">
-        <button @click ="filterByTab('inbox')">Inbox</button>
-        <button @click ="filterByTab('starred')">Starred</button>
-        <button @click ="filterByTab('sent')">Sent</button>
-        <button @click ="filterByTab('draft')">Draft</button>
-        <button @click ="filterByTab('trash')">Trash</button>
+        <button @click ="filterByTab('inbox')"> 
+            <span class="material-symbols-outlined">
+            inbox</span> 
+            Inbox</button>
+        <button @click ="filterByTab('starred')">
+        <span class="material-symbols-outlined">
+        star
+        </span>
+        Starred</button>
+        <button @click ="filterByTab('sent')"><span class="material-symbols-outlined">
+        send
+        </span>
+        Sent</button>
+        <button @click ="filterByTab('draft')">
+        <span class="material-symbols-outlined">
+        draft
+        </span>
+        Draft</button>
+        <button @click ="filterByTab('trash')">
+        <span class="material-symbols-outlined">
+        delete
+        </span>
+        Trash</button>
         </div>
         `,
     components: {},

@@ -13,7 +13,10 @@ export default {
 
         <div class="email-filter-list">
           <h1 title="CoeMail" @click="handleLogoClick" class="logo">CoeMail</h1>
-          <RouterLink class="compose" @click="handleCompose" to="/email/edit"> Compose </RouterLink>
+          <RouterLink class="compose" @click="handleCompose" to="/email/edit"> <span class="material-symbols-outlined">
+          edit
+          </span>
+          Compose </RouterLink>
           <EmailCategories />
         </div>
 
