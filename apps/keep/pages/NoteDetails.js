@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js';
 
 export default {
-  name: 'noteDetails',
+  name: 'NoteDetails',
   template: `
 
 <section v-if="note" :style="{backgroundColor: note.style.backgroundColor}" class="note-details keep-modal">

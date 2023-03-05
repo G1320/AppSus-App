@@ -13,13 +13,22 @@ export default {
                 Unread: {{getUnread}}
             </div>
             <ul class="clean-list">
-                <li v-for="email in filteredEmails" :key="email.id" class="email" @click="handleEmailClick(email)">
-                    <EmailPreview :email="email"/>
+                <li v-for="email in filteredEmails" :key="email" class="email" @click="handleEmailClick(email)">
+                    <div class="test">
+                        <button><span class="material-symbols-outlined">
+                        check_box_outline_blank
+                        </span></button>
+                        <EmailPreview :email="email"/>
+                    </div>
                     <div class="preview-btns-container">
                         <RouterLink @click="handleEdit(email)" v-if="email.tab === 'draft'" :to="'/email/edit/'+email.id">Edit</RouterLink>
                         <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink> -->
-                        <button title="Mark/Unmark Star" v-bind:class="{ 'starred': email.tab === 'starred' }" @click="starEmail(email.id, $event)">star</button>
-                        <button title="Move to Trash" @click="removeEmail(email.id, $event)">x</button>
+                        <button class="ep-btn" title="Mark/Unmark Star" v-bind:class="{ 'starred': email.tab === 'starred' }" @click="starEmail(email.id, $event)"><span class="material-symbols-outlined">
+                        star
+                        </span></button>
+                        <button class="ep-btn" title="Move to Trash" @click="removeEmail(email.id, $event)"><span class="material-symbols-outlined">
+                        delete
+                        </span></button>
                     </div>
                 </li>
             </ul>
@@ -53,6 +62,10 @@ export default {
                     if (email.tab !== 'trash') {
                         email.tab = 'trash'
                         emailService.save(email)
+                            .then(savedEmail => {
+                                const idx = this.emails.findIndex(email => email.id === emailId)
+                                this.emails[idx] = savedEmail
+                            })
                         this.$router.push({ path: '/email/list' });
                     }
                     else {
@@ -78,7 +91,10 @@ export default {
                     }
                     else email.tab = ''
                     emailService.save(email)
-                    this.emails = [...this.emails]
+                        .then(savedEmail => {
+                            const idx = this.emails.findIndex(email => email.id === emailId)
+                            this.emails[idx] = savedEmail
+                        })
                 })
                 .catch(err => {
                     console.log('Email starring failed')
@@ -160,15 +176,15 @@ export default {
                     filterdMaEmail = filterdMaEmail.filter(email => email.from === 'me@coemail.com')
                     filterdMaEmail = filterdMaEmail.filter(email => email.tab !== 'draft')
                 }
-                else if (this.filterBy.tab === 'draft') {
-                    filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'draft')
-                }
-                else if (this.filterBy.tab === 'trash') {
-                    filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'trash')
-                }
-                else if (this.filterBy.tab === 'starred') {
-                    filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'starred')
-                }
+                // else if (this.filterBy.tab === 'draft') {
+                //     filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'draft')
+                // }
+                // else if (this.filterBy.tab === 'trash') {
+                //     filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'trash')
+                // }
+                // else if (this.filterBy.tab === 'starred') {
+                //     filterdMaEmail = filterdMaEmail.filter(email => email.tab === 'starred')
+                // }
                 else {
                     console.log('filter by tab', this.filterBy);
                     filterdMaEmail = filterdMaEmail.filter(email => email.tab === this.filterBy.tab)

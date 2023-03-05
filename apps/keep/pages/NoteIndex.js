@@ -4,11 +4,11 @@ import NoteCategories from '../cmps/NoteCatagories.js';
 import noteFilter from '../cmps/NoteFilter.js';
 import noteList from '../cmps/NoteList.js';
 
-import noteDetails from './noteDetails.js';
+import NoteDetails from './NoteDetails.js';
 // import noteEdit from './noteEdit.js';
 
 export default {
-  name: 'noteDetails',
+  name: 'NoteIndex',
   template: `
     <main class="keep-main-content">
     <NoteCategories />
@@ -65,7 +65,7 @@ export default {
   components: {
     noteFilter,
     noteList,
-    noteDetails,
+    NoteDetails,
     NoteCategories,
     // noteEdit,
   },
