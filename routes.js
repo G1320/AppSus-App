@@ -30,7 +30,7 @@ const options = {
           component: NoteDetails,
         },
         {
-          path: '/note/edit/:noteId',
+          path: '/note/edit/',
           component: NoteEdit,
         },
       ],

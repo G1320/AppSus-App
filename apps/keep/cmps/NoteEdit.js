@@ -5,16 +5,18 @@ export default {
   name: 'noteEdit',
   template: `
         <section :style="{backgroundColor: note.style.backgroundColor}" class="note-edit keep-modal">
-            <h2>{{(note.id)? 'Edit' : 'Add'}} a note</h2>
-            <!-- <pre>{{ note }}</pre> -->
-            <img v-if="note.type === 'NoteImg'" :src="note.info.url">
+            <h2> Add a note</h2>  
+            <form @submit.prevent="save">
             <input  type="text" v-model="note.info.title" contentEditable="true">
-             <input type="text" v-model="note.info.imgTitle" contentEditable="true"> 
-             <!-- <input  type="text" v-model="note.info.txt" placeholder="Txt"> -->
-             <form @submit.prevent="save">
-                <!-- <input type="number" v-model.number="note.maxSpeed"> -->
-                <!-- <button>Save</button> -->
+            <input  type="text" v-model="note.info.txt" placeholder="Txt">
+            <input  type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
 
+         
+<button @click="save">
+<span class="material-symbols-outlined">
+save
+</span>
+</button>
               </form>
               <RouterLink to="/note">
           <span class="material-symbols-outlined">

@@ -432,6 +432,10 @@
   min-height: 10svh;
 }
 
+.note-edit input {
+  width: 100%;
+}
+
 .note-filter input {
   margin-block-end: 2em;
   margin-block-start: 2em;

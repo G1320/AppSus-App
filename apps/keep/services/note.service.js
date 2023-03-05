@@ -52,12 +52,12 @@ function getEmptyNote(title = '') {
     createdAt: 33112222,
     type: 'NoteTxt',
     isPinned: true,
-    title: 'Title',
+    title: 'Your title here',
     style: {
-      backgroundColor: '#b6fb45',
+      backgroundColor: '#01c1e7',
     },
     info: {
-      txt: 'The best note ever!',
+      txt: 'Your note here',
     },
   };
 }

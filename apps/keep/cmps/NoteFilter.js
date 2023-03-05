@@ -2,6 +2,12 @@ export default {
   name: 'noteFilter',
   template: `
       <section class="note-filter">
+                     <RouterLink  :to="'/note/edit/'"> 
+                     <span class="material-symbols-outlined">
+add_circle
+</span>
+                     </RouterLink> 
+
           <input 
               v-model="filterBy.categories"
               placeholder="Filter by title"
