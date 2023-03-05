@@ -436,6 +436,10 @@
   width: 100%;
 }
 
+.icon-add-note {
+  margin-inline-start: 1em;
+}
+
 .note-filter input {
   margin-block-end: 2em;
   margin-block-start: 2em;

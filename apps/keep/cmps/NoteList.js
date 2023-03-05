@@ -59,8 +59,9 @@ export default {
   },
   methods: {
     remove(noteId) {
-      this.$emit('remove', noteId).then;
-      showSuccessMsg('Email removed');
+      this.$emit('remove', noteId).then(() => {
+        showSuccessMsg('Email removed');
+      });
     },
     showDetails(noteId) {
       this.$emit('show-details', noteId);
