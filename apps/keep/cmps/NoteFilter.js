@@ -3,17 +3,17 @@ export default {
   template: `
       <section class="note-filter">
         
-        <input 
-        v-model="filterBy.categories"
-        placeholder="Filter by title"
-        type="text" />
         <RouterLink  :to="'/note/edit/'"> 
         <span class=" icon-add-note material-symbols-outlined">
 add_circle
 </span>
         </RouterLink> 
-        
-        <!-- <input 
+          <input 
+              v-model="filterBy.categories"
+              placeholder="Filter by title"
+              type="text" />
+              
+          <!-- <input 
               v-model.number="filterBy.maxSpeed"
               placeholder="Max speed"
               type="number" /> -->
