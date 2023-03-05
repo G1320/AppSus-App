@@ -304,14 +304,22 @@
 }
 
 @media (min-width: 925px) {
+  .keep-note {
+    max-width: 52svw;
+  }
+
   .note-list {
     columns: auto 250px;
   }
 }
 
 @media (max-width: 690px) {
+  .keep-note {
+    max-width: 400px;
+  }
   .note-list {
     height: 80svh;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -323,13 +331,13 @@
   color: #ffffff;
   position: relative;
   break-inside: avoid;
-
+  max-width: 100%;
   text-align: ltr;
   flex: 1 1 238px;
   margin-bottom: 0.5rem;
 
   padding: 1em;
-  max-width: 52svw;
+  /* max-width: 52svw; */
   min-width: 238px;
   height: max-content;
   /* max-height: 300px; */
@@ -342,12 +350,14 @@
 }
 
 .note-preview-icon-wrapper {
-  margin-block-start: 1em;
+  margin-block-start: 1.5em;
   display: grid;
   grid-template-columns: repeat(4, 2.8svw);
   gap: 0.5em;
   justify-items: start;
-  align-items: start;
+  align-items: center;
+  justify-content: start;
+
   /* margin-inline-end: 1em; */
 }
 
@@ -361,7 +371,20 @@
 } */
 
 .keep-note input[type='color'] {
-  align-self: center;
+  align-self: flex-end;
+  /* justify-self: center; */
+  margin-inline-start: 0.1em;
+  margin-block-end: 0.4em;
+
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  /* background-color: ; */
+  border-radius: 50%;
+}
+
+.keep-modal input[type='color'] {
+  align-self: start;
   justify-self: start;
   margin-inline-start: 0.1em;
 

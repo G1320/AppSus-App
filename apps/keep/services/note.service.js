@@ -210,9 +210,9 @@ function _createNotes() {
         isPinned: false,
 
         info: {
-          title: '',
+          title: 'The best note ever!',
           url: 'https://source.unsplash.com/random/?cats&3',
-          imgTitle: '',
+          imgTitle: 'Oops, I did it again!',
         },
         style: {
           backgroundColor: '#dc464d',

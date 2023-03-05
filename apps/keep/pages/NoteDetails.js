@@ -14,12 +14,15 @@ export default {
               </textarea>
             <textarea v-else :style="{backgroundColor: note.style.backgroundColor}" @input="save"  class="note-preview-text" v-model="note.info.imgTitle" contentEditable="true" placeholder="note.info.imgTitle">
               </textarea>
-          <input @change="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
-          <RouterLink @click="save"  to="/note">
-            <span class="material-symbols-outlined">
-              close
-              </span>
-            </RouterLink>
+              <div class="note-detail-icon-wrapper">
+
+                <input @change="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
+                <RouterLink @click="save"  to="/note">
+                  <span class="material-symbols-outlined">
+                    close
+                  </span>
+                </RouterLink>
+              </div>
         </section>
         
     `,

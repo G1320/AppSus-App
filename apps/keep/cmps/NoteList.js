@@ -12,9 +12,14 @@ export default {
                <NotePreview :note="note"/>
                      
           <div class="note-preview-icon-wrapper">
+
           <input @input="save" type="color" v-model="note.style.backgroundColor" value="note.style.backgroundColor">
 
-            <RouterLink  :to="'/note/'+note.id">Details</RouterLink> 
+            <RouterLink  :to="'/note/'+note.id">
+            <span class="material-symbols-outlined">
+             info
+             </span>
+            </RouterLink> 
              <!-- <RouterLink  :to="'/note/edit/'+note.id"> Edit</RouterLink>  -->
             <span @click="remove(note.id)" class="material-symbols-outlined">
               close
