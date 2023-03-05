@@ -302,6 +302,7 @@
   height: max-content;
   /* max-height: 300px; */
   border-radius: 6px;
+  backdrop-filter: drop-shadow(4px 4px 10px black);
 }
 
 .keep-filter-list .icon {
@@ -433,6 +434,7 @@
   min-width: 50svw;
   max-width: 600px;
   border-radius: 6px;
+  backdrop-filter: drop-shadow(4px 4px 50px black);
 }
 
 .keep-modal img {

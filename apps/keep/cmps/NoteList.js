@@ -1,15 +1,14 @@
 import NotePreview from './NotePreview.js';
-// import { eventBus } from '../../../services/event-bus.service.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 import { noteService } from '../services/note.service.js';
 
 export default {
   name: 'noteList',
   props: ['notes'],
   template: `
-    
         <section class="note-list">
           
-                <article  v-for="note in notes"  :style="{backgroundColor: note.style.backgroundColor}" class="keep-note" :key="note.id">
+                <article  v-for="note in filteredNotes"  :style="{backgroundColor: note.style.backgroundColor}" class="keep-note" :key="note.id">
                <NotePreview :note="note"/>
                      
           <div class="note-preview-icon-wrapper">
@@ -26,14 +25,31 @@ export default {
     `,
   data() {
     return {
-      // notes: [],
-      filterBy: {},
+      notes: [],
+      filterBy: {
+        catagories: 'pinned',
+      },
     };
+  },
+  created() {
+    noteService.query().then((notes) => (this.notes = notes));
+    eventBus.on('filter', this.setFilterBy);
+    eventBus.on('save', this.onSave);
+    // this.filterBy
+    // console.log(this.setFilterBy);
   },
   computed: {
     filteredNotes() {
-      const regex = new RegExp(this.filterBy.createdAt, 'i');
-      return this.notes.filter((note) => regex.test(note.type));
+      const regex = new RegExp(this.filterBy.title, 'i');
+      return this.notes.filter((note) => regex.test(note.title));
+
+      let filteredNotes = this.notes;
+
+      let filterBy = this.filterBy.catagories;
+
+      return filteredNotes.filter((note) => {
+        // note.isPinned === true;
+      });
     },
   },
   methods: {
@@ -46,7 +62,7 @@ export default {
     },
     setFilterBy(filter) {
       console.log('setFilter', filter);
-      this.filterBy = { ...this.filterBy, ...filter, catagories: this.filterBy.tab };
+      this.filterBy = { ...this.filterBy, ...filter, catagories: this.filterBy.catagories };
     },
     // setFilterBy(filterBy) {
     //   console.log('filterBy: ', filterBy);
@@ -54,6 +70,22 @@ export default {
     // },
     save() {
       noteService.save({ ...this.note });
+    },
+  },
+  watch: {
+    $route: {
+      handler(newValue, oldValue) {
+        console.log('', oldValue);
+        console.log('', newValue);
+        const { catagories } = this.$route.query;
+        if (!catagories) return;
+        console.log('tab:', catagories);
+        this.filterBy.catagories = catagories;
+        // Note: `newValue` will be equal to `oldValue` here
+        // on nested mutations as long as the object itself
+        // hasn't been replaced.
+      },
+      deep: true,
     },
   },
   components: {

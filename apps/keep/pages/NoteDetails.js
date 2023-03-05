@@ -47,5 +47,7 @@ export default {
       noteService.save({ ...this.note });
     },
   },
-  components: {},
+  components: {
+    noteService,
+  },
 };

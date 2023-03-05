@@ -3,9 +3,9 @@ export default {
   template: `
       <section class="note-filter">
           <input 
-              v-model="filterBy.id"
-              placeholder="Filter by ID"
-              type="number" />
+              v-model="filterBy.categories"
+              placeholder="Filter by title"
+              type="text" />
               
           <!-- <input 
               v-model.number="filterBy.maxSpeed"
