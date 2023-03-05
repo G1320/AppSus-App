@@ -352,7 +352,7 @@
 .note-preview-icon-wrapper {
   margin-block-start: 1.5em;
   display: grid;
-  grid-template-columns: repeat(4, 2.8svw);
+  grid-template-columns: repeat(4, 1em);
   gap: 0.5em;
   justify-items: start;
   align-items: center;
